@@ -1,0 +1,67 @@
+<resources>
+    <!-- App Info -->
+    <string name="app_name">Gymify</string>
+    <string name="app_name_title">Gymify!</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_start_button">Start</string>
+    <string name="welcome_title">Welcome to</string>
+
+    <!-- Gender Selection -->
+    <string name="gender_question">What\'s your gender?</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_other">Other</string>
+
+    <!-- Titles -->
+    <string name="title_your_workout_plans">Your Workout Plans</string>
+
+    <!-- Buttons -->
+    <string name="button_continue">Continue</string>
+    <string name="button_finish">Finish</string>
+
+    <!-- Units -->
+    <string name="unit_ft">ft</string>
+    <string name="unit_cm">cm</string>
+    <string name="unit_lbs">lbs</string>
+    <string name="unit_kg">kg</string>
+
+    <!-- Workout -->
+    <string name="your_workout_plans">Your Workout Plans</string>
+    <string name="workout_program">Workout Program</string>
+
+    <!-- Expertise Levels -->
+    <string name="your_expertise_level">Your expertise level</string>
+    <string name="level_beginner">Beginner</string>
+    <string name="level_intermediate">Intermediate</string>
+    <string name="level_advanced">Advanced</string>
+
+    <!-- Hints -->
+    <string name="you_can_change_in_the_settings">You can change it in the settings anytime</string>
+    <string name="enter_your_height">Enter your height</string>
+    <string name="finish">Finish</string>
+
+    <!-- Option Tabs -->
+    <string name="tab_exercise_name">Name</string>
+    <string name="tab_muscle_group">Muscle Group</string>
+    <string name="tab_number_of_sets">The number of sets</string>
+    <string name="tab_number_of_reps">The number of reps</string>
+    <string name="tab_working_weight">The working weight</string>
+
+
+    <!-- Muscle Groups -->
+    <string name="muscle_chest">Chest</string>
+    <string name="muscle_back">Back</string>
+    <string name="muscle_biceps">Biceps</string>
+    <string name="muscle_triceps">Triceps</string>
+    <string name="muscle_shoulders">Shoulders</string>
+    <string name="muscle_legs">Legs</string>
+    <string name="muscle_abdominals">Abdominals</string>
+
+    <string name="user_preferences">User Preferences</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System Default</string>
+
+
+</resources>
