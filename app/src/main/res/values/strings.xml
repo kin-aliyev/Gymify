@@ -42,7 +42,7 @@
     <string name="finish">Finish</string>
 
     <!-- Option Tabs -->
-    <string name="tab_exercise_name">Name</string>
+    <string name="tab_name">Name</string>
     <string name="tab_muscle_group">Muscle Group</string>
     <string name="tab_number_of_sets">The number of sets</string>
     <string name="tab_number_of_reps">The number of reps</string>
@@ -57,6 +57,7 @@
     <string name="muscle_shoulders">Shoulders</string>
     <string name="muscle_legs">Legs</string>
     <string name="muscle_abdominals">Abdominals</string>
+    <string name="no_muscle_group_selected">Not selected</string>
 
     <string name="user_preferences">User Preferences</string>
     <string name="theme_light">Light</string>

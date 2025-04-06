@@ -33,3 +33,19 @@ import com.example.gymify.R
 //        return iconMap[iconId] ?: R.drawable.standard_icon
 //    }
 //}
+
+object MuscleGroupNameMapper {
+    private val nameMap = mapOf(
+        "muscle_chest" to R.string.muscle_chest,
+        "muscle_back" to R.string.muscle_back,
+        "muscle_biceps" to R.string.muscle_biceps,
+        "muscle_triceps" to R.string.muscle_triceps,
+        "muscle_shoulders" to R.string.muscle_shoulders,
+        "muscle_legs" to R.string.muscle_legs,
+        "muscle_abdominals" to R.string.muscle_abdominals
+    )
+
+    fun getName(nameKey: String) : Int {
+        return nameMap[nameKey] ?: R.string.no_muscle_group_selected
+    }
+}

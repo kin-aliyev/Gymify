@@ -24,5 +24,7 @@ sealed interface MakeWorkoutPlanAction {
     data class DeleteExercise(val exerciseId: String) : MakeWorkoutPlanAction     // Удаление упражнения из списка выбранных упражнений
     data class EditExercise(val workoutExerciseWithExerciseInfo: WorkoutExerciseWithExerciseInfo) : MakeWorkoutPlanAction // Редактирование уже добавленного упражнения
 
+    data class LoadExistingWorkoutPlan(val workoutPlanId: Int) : MakeWorkoutPlanAction // Если изменяем существующий план
+
 
 }

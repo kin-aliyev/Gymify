@@ -44,6 +44,7 @@ import com.example.gymify.main.presentation.make_workoutplan_screen.components.O
 import com.example.gymify.main.presentation.make_workoutplan_screen.components.OptionTabSets
 import com.example.gymify.main.presentation.make_workoutplan_screen.components.OptionTabWeight
 import com.example.gymify.core.domain.model.UserWeightUnit
+import com.example.gymify.core.util.MuscleGroupNameMapper
 import com.example.gymify.main.domain.model.WorkoutExercise
 import com.example.gymify.ui.theme.GymifyTheme
 import com.example.gymify.ui.theme.rubikFontFamily
@@ -53,21 +54,20 @@ import com.example.gymify.ui.theme.rubikFontFamily
 fun MakeWorkoutPlanScreen(
     modifier: Modifier = Modifier,
     onNavigateBack: () -> Unit,
-    exerciseNameKey: String,
-    muscleGroupName: String,
+    state: MakeWorkoutPlanState,
+    onPlanNameChanged: (String) -> Unit,
     onMuscleGroupClick: () -> Unit,
-    numberOfSets: String,
     onNumOfSetsChanged: (String) -> Unit,
-    numberOfReps: String,
     onNumOfRepsChanged: (String) -> Unit,
-    weight: String,
     onWeightChanged: (String) -> Unit,
-    userWeightUnit: UserWeightUnit,
-    workoutExerciseWithExerciseInfos: List<WorkoutExerciseWithExerciseInfo>,
     onAddExercise: () -> Unit,
     onSaveWorkoutPlan: () -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+    val muscleGroupNameResId = state.selectedMuscleGroup?.let {
+        MuscleGroupNameMapper.getName(it.nameKey)
+    } ?: R.string.no_muscle_group_selected
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -88,17 +88,26 @@ fun MakeWorkoutPlanScreen(
         ) {
             Spacer(Modifier.height(10.dp))
 
-            OptionTabName(
-                optionName = stringResource(R.string.tab_exercise_name),
-                exerciseValue = exerciseNameKey,
+            OptionTabSets(
+                optionName = stringResource(R.string.tab_name),
+                numOfSets = state.planName,
+                onNumOfSetsChanged = { onPlanNameChanged(it) },
                 modifier = Modifier.padding(horizontal = 12.dp)
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            OptionTabName(
+                optionName = "The Exercise",
+                exerciseValue = state.exerciseNameKey ?: "",
+                modifier = Modifier.padding(horizontal = 12.dp),
             )
 
             Spacer(Modifier.height(16.dp))
 
             OptionTabChoose(
                 optionName = stringResource(R.string.tab_muscle_group),
-                muscleGroupName = muscleGroupName,
+                muscleGroupName = stringResource(muscleGroupNameResId),
                 onMuscleGroupClick = onMuscleGroupClick,
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
@@ -107,7 +116,7 @@ fun MakeWorkoutPlanScreen(
 
             OptionTabSets(
                 optionName = stringResource(R.string.tab_number_of_sets),
-                numOfSets = numberOfSets,
+                numOfSets = state.numberOfSets,
                 onNumOfSetsChanged = { onNumOfSetsChanged(it) },
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
@@ -116,7 +125,7 @@ fun MakeWorkoutPlanScreen(
 
             OptionTabSets(
                 optionName = stringResource(R.string.tab_number_of_reps),
-                numOfSets = numberOfReps,
+                numOfSets = state.numberOfReps,
                 onNumOfSetsChanged = { onNumOfRepsChanged(it) },
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
@@ -125,9 +134,9 @@ fun MakeWorkoutPlanScreen(
 
             OptionTabWeight(
                 optionName = stringResource(R.string.tab_working_weight),
-                weight = weight,
+                weight = state.weight,
                 onWeightChange = { onWeightChanged(it) },
-                userWeightUnit = userWeightUnit,
+                userWeightUnit = state.userWeightUnit,
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
 
@@ -137,7 +146,7 @@ fun MakeWorkoutPlanScreen(
                 modifier = Modifier
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = if (workoutExerciseWithExerciseInfos.isEmpty()) Arrangement.Center
+                horizontalArrangement = if (state.selectedExercises.toList().isEmpty()) Arrangement.Center
                 else Arrangement.SpaceEvenly
             ) {
                 AddButton(
@@ -146,7 +155,7 @@ fun MakeWorkoutPlanScreen(
                     isAddButton = true
                 )
 
-                if (workoutExerciseWithExerciseInfos.isNotEmpty()) {
+                if (state.selectedExercises.values.toList().isNotEmpty()) {
                     AddButton(
                         onClick = onSaveWorkoutPlan,
                         buttonText = "Save",
@@ -189,7 +198,7 @@ fun MakeWorkoutPlanScreen(
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                items(workoutExerciseWithExerciseInfos) { workoutExerciseRelation ->
+                items(state.selectedExercises.values.toList()) { workoutExerciseRelation ->
                     AddedExerciseView(
                         workoutExerciseWithExerciseInfo = workoutExerciseRelation
                     )
@@ -206,34 +215,32 @@ private fun MakeWorkoutPlanScreenPreview() {
         MakeWorkoutPlanScreen(
             onNavigateBack = { },
             onMuscleGroupClick = { },
-            muscleGroupName = "Calves",
-            exerciseNameKey = "",
-            numberOfSets = "2",
-            numberOfReps = "15",
             onNumOfSetsChanged = { },
             onNumOfRepsChanged = { },
             onWeightChanged = { },
-            weight = "85",
-            userWeightUnit = UserWeightUnit.KG,
             onSaveWorkoutPlan = { },
-            workoutExerciseWithExerciseInfos = listOf(
-                WorkoutExerciseWithExerciseInfo(
-                    workoutExercise = WorkoutExercise(
-                        id = 0,
-                        weight = 10f,
-                        sets = 1,
-                        reps = 1,
-                        workoutPlanId = 2,
-                        exerciseId = 0
-                    ),
-                    exercise = Exercise(
-                        0, "", MuscleGroup.BACK,
-                        "", "", true,
-                    ),
+            onAddExercise = { },
+            onPlanNameChanged = { },
+            state = MakeWorkoutPlanState(),
 
-                )
-            ),
-            onAddExercise = { }
+
+//            workoutExerciseWithExerciseInfos = listOf(
+//                WorkoutExerciseWithExerciseInfo(
+//                    workoutExercise = WorkoutExercise(
+//                        id = 0,
+//                        weight = 10f,
+//                        sets = 1,
+//                        reps = 1,
+//                        workoutPlanId = 2,
+//                        exerciseId = 0
+//                    ),
+//                    exercise = Exercise(
+//                        0, "", MuscleGroup.BACK,
+//                        "", "", true,
+//                    ),
+//
+//                    )
+//            ),
         )
     }
 }
