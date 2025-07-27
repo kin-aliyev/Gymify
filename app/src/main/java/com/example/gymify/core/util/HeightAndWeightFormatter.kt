@@ -8,7 +8,7 @@ fun formatWeight(weight: String, unit: UserWeightUnit): String {
     val numericWeight = weight.toFloatOrNull() ?: 0f
 
     return when(unit) {
-        UserWeightUnit.KG -> numericWeight.toString()
+        UserWeightUnit.KG -> numericWeight.toInt().toString()
         UserWeightUnit.LBS -> (numericWeight * 2.20462f).toInt().toString()
     }
 }

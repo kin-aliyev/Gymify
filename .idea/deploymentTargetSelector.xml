@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="WeightListPreview">
+      <SelectionState runConfigName="MuscleGroupScreenPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="WeightPickerPreview">
+      <SelectionState runConfigName="SearchBarPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="YourWorkoutPlansScreenPreview">
+      <SelectionState runConfigName="PreviewExercisesScreen">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AppAppearanceScreenPreview">
+      <SelectionState runConfigName="WorkoutPlanDetailScreenPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="LanguageScreenPreview">
+      <SelectionState runConfigName="WorkoutCompleteScreenPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

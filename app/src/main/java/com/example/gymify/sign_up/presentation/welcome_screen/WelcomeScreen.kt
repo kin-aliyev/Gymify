@@ -56,14 +56,14 @@ fun WelcomeScreen(modifier: Modifier = Modifier, onNavigateToGenderScreen: () ->
                 .align(Alignment.Center)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ellipse_1),
+                painter = painterResource(id = R.drawable.form_ellipse_1),
                 contentDescription = null,
                 modifier = Modifier
                     .size(340.dp)
                     .align(Alignment.Center)
             )
             Image(
-                painter = painterResource(id = R.drawable.deadlift_man),
+                painter = painterResource(id = R.drawable.icon_deadlift_man),
                 contentDescription = null,
                 modifier = Modifier
                     .size(240.dp)

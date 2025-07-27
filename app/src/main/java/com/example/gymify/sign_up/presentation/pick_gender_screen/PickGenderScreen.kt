@@ -74,7 +74,7 @@ fun PickGenderScreen(
             maxItemsInEachRow = 2
         ) {
             GenderPickItem(
-                text = stringResource(R.string.gender_male), icon = R.drawable.male_symbol,
+                text = stringResource(R.string.gender_male), icon = R.drawable.icon_male_symbol,
                 modifier = Modifier.padding(end = 24.dp),
                 isSelected = userGender == UserGender.MALE,
                 onGenderClick = {
@@ -83,7 +83,7 @@ fun PickGenderScreen(
             )
             GenderPickItem(
                 text = stringResource(R.string.gender_female),
-                icon = R.drawable.female_symbol,
+                icon = R.drawable.icon_female_symbol,
                 isSelected = userGender == UserGender.FEMALE,
                 onGenderClick = {
                     onAction(PickGenderAction.onGenderClick(UserGender.FEMALE))

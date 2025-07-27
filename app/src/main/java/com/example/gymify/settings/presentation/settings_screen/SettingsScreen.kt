@@ -115,7 +115,7 @@ fun SettingsScreen(
                             )
 
                             Image(
-                                painter = painterResource(R.drawable.dodo1),
+                                painter = painterResource(R.drawable.icon_top_app_bar_black),
                                 contentDescription = null,
                                 modifier = Modifier
                                     .padding(start = 24.dp)

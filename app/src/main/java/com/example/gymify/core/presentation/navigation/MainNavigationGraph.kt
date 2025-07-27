@@ -1,17 +1,21 @@
 package com.example.gymify.core.presentation.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.example.gymify.core.presentation.navigation.analytics.analyticsNavGraph
 import com.example.gymify.core.presentation.navigation.home.homeNavGraph
 import com.example.gymify.core.presentation.navigation.settings.settingsNavGraph
 import com.example.gymify.core.presentation.navigation.sign_up.signUpNavGraph
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun MainNavigationGraph( navController: NavHostController, isRegistered: Boolean) {
+fun MainNavigationGraph( navController: NavHostController, isRegistered: Boolean ) {
     NavHost(
         navController = navController,
         startDestination = if (isRegistered) HomeNavigationGraph else SignUpNavigationGraph,
@@ -20,6 +24,7 @@ fun MainNavigationGraph( navController: NavHostController, isRegistered: Boolean
     ) {
         signUpNavGraph(navController)
         homeNavGraph(navController)
+        analyticsNavGraph(navController)
         settingsNavGraph(navController)
     }
 }

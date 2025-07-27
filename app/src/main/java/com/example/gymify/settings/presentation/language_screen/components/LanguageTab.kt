@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,9 +35,9 @@ enum class LanguageTabItem(
     val languageName: String,
     val locale: String
 ) {
-    English(R.drawable.usa_flag, languageName = "English (US)", locale = "en"),
-    Russian(R.drawable.russian_flag, languageName = "Русский язык", locale = "ru"),
-    Azerbaijan(R.drawable.azerbaijani_flag, languageName = "Azərbaycan dili", locale = "az")
+    English(R.drawable.flag_usa, languageName = "English (US)", locale = "en"),
+    Russian(R.drawable.flag_russia, languageName = "Русский язык", locale = "ru"),
+    Azerbaijan(R.drawable.flag_azerbaijan, languageName = "Azərbaycan dili", locale = "az")
 }
 
 @Composable
@@ -101,7 +100,7 @@ fun LanguageTab(
 private fun LanguageTabPreview() {
     GymifyTheme {
         LanguageTab(
-            icon = R.drawable.usa_flag,
+            icon = R.drawable.flag_usa,
             languageName = "English (US)",
             isSelected = false,
             onClick = { }

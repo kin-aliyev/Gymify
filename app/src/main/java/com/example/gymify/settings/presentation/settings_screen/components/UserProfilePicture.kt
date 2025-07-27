@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -48,7 +47,7 @@ fun UserProfilePicture(
 //                .clip(CircleShape)
         ) {
             Image(
-                painter = painterResource(R.drawable.deadlift_man),
+                painter = painterResource(R.drawable.icon_deadlift_man),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier.matchParentSize()

@@ -9,4 +9,7 @@ object SignUpNavigationGraph
 object HomeNavigationGraph
 
 @Serializable
+object AnalyticsNavigationGraph
+
+@Serializable
 object SettingsNavigationGraph

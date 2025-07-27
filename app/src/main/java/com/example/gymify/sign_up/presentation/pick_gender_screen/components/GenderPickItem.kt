@@ -104,7 +104,7 @@ private fun GenderPickBoxPreview() {
     GymifyTheme {
         GenderPickItem(
             text = "Female",
-            icon = R.drawable.female_symbol,
+            icon = R.drawable.icon_female_symbol,
             onGenderClick = { }
         )
     }
@@ -116,7 +116,7 @@ private fun GenderPickBoxPreview2() {
     GymifyTheme {
         GenderPickItem(
             text = "Male",
-            icon = R.drawable.male_symbol,
+            icon = R.drawable.icon_male_symbol,
             onGenderClick = { }
         )
     }

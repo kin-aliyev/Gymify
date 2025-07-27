@@ -12,53 +12,55 @@ import com.example.gymify.core.domain.usecases.registration.ReadRegistrationStat
 import com.example.gymify.core.domain.usecases.registration.SaveRegistrationUseCase
 import com.example.gymify.core.domain.usecases.theme_mode.GetThemeModeUseCase
 import com.example.gymify.core.domain.usecases.theme_mode.SetThemeModeUseCase
-import com.example.gymify.main.domain.repository.ExerciseRepository
-import com.example.gymify.main.domain.repository.ExerciseStatsRepository
-import com.example.gymify.main.domain.repository.WorkoutExerciseRepository
-import com.example.gymify.main.domain.repository.WorkoutPlanRepository
-import com.example.gymify.main.domain.repository.WorkoutSessionRepository
-import com.example.gymify.main.domain.usecases.ExerciseStatsUseCases
-import com.example.gymify.main.domain.usecases.ExerciseUseCases
-import com.example.gymify.main.domain.usecases.WorkoutExerciseUseCases
-import com.example.gymify.main.domain.usecases.WorkoutPlanUseCases
-import com.example.gymify.main.domain.usecases.WorkoutSessionUseCases
-import com.example.gymify.main.domain.usecases.exercise.DeleteExerciseByIdUseCase
-import com.example.gymify.main.domain.usecases.exercise.DeleteExerciseUseCase
-import com.example.gymify.main.domain.usecases.exercise.GetAllExercisesUseCase
-import com.example.gymify.main.domain.usecases.exercise.GetExerciseByIdUseCase
-import com.example.gymify.main.domain.usecases.exercise.GetExerciseWithStatsByIdUseCase
-import com.example.gymify.main.domain.usecases.exercise.GetExercisesByMuscleGroupUseCase
-import com.example.gymify.main.domain.usecases.exercise.UpsertExerciseUseCase
-import com.example.gymify.main.domain.usecases.exercise_stats.GetExerciseStatsUseCase
-import com.example.gymify.main.domain.usecases.exercise_stats.UpdateLastWeightUseCase
-import com.example.gymify.main.domain.usecases.exercise_stats.UpdateMaxWeightUseCase
-import com.example.gymify.main.domain.usecases.exercise_stats.UpsertExerciseStatsUseCase
-import com.example.gymify.main.domain.usecases.workout_exercise.DeleteWorkoutExerciseByIdUseCase
-import com.example.gymify.main.domain.usecases.workout_exercise.DeleteWorkoutExerciseUseCase
-import com.example.gymify.main.domain.usecases.workout_exercise.GetFullExercisesForWorkoutPlanUseCase
-import com.example.gymify.main.domain.usecases.workout_exercise.GetWorkoutExerciseByIdUseCase
-import com.example.gymify.main.domain.usecases.workout_exercise.GetWorkoutExerciseByPlanIdUseCase
-import com.example.gymify.main.domain.usecases.workout_exercise.GetWorkoutExerciseWithExerciseUseCase
-import com.example.gymify.main.domain.usecases.workout_exercise.UpsertWorkoutExerciseUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.DeleteWorkoutPlanByIdUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.DeleteWorkoutPlanUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetAllWorkoutPlansByExpertiseLevel
-import com.example.gymify.main.domain.usecases.workout_plan.GetAllWorkoutPlansUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetAllWorkoutPlansWithFullExercisesUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetPredefinedWorkoutPlansUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetUserDefinedWorkoutPlansUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetWorkoutPlanByIdUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetWorkoutPlanWithFullExercisesUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetWorkoutPlanWithSessionsUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetWorkoutPlanWithWorkoutExercisesUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.GetWorkoutPlansWithWorkoutExercisesUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.UpdateLastUsedDateUseCase
-import com.example.gymify.main.domain.usecases.workout_plan.UpsertWorkoutPlanUseCase
-import com.example.gymify.main.domain.usecases.workout_session.DeleteWorkoutSessionByIdUseCase
-import com.example.gymify.main.domain.usecases.workout_session.GetSessionsByPlanIdUseCase
-import com.example.gymify.main.domain.usecases.workout_session.GetSessionsByTimeRangeUseCase
-import com.example.gymify.main.domain.usecases.workout_session.GetWorkoutSessionByIdUseCase
-import com.example.gymify.main.domain.usecases.workout_session.UpsertWorkoutSessionUseCase
+import com.example.gymify.home.util.TimeRangeUtils
+import com.example.gymify.home.domain.repository.ExerciseRepository
+import com.example.gymify.home.domain.repository.ExerciseStatsRepository
+import com.example.gymify.home.domain.repository.WorkoutExerciseRepository
+import com.example.gymify.home.domain.repository.WorkoutPlanRepository
+import com.example.gymify.home.domain.repository.WorkoutSessionRepository
+import com.example.gymify.home.domain.usecases.ExerciseStatsUseCases
+import com.example.gymify.home.domain.usecases.ExerciseUseCases
+import com.example.gymify.home.domain.usecases.WorkoutExerciseUseCases
+import com.example.gymify.home.domain.usecases.WorkoutPlanUseCases
+import com.example.gymify.home.domain.usecases.WorkoutSessionUseCases
+import com.example.gymify.home.domain.usecases.exercise.DeleteExerciseByIdUseCase
+import com.example.gymify.home.domain.usecases.exercise.DeleteExerciseUseCase
+import com.example.gymify.home.domain.usecases.exercise.GetAllExercisesUseCase
+import com.example.gymify.home.domain.usecases.exercise.GetExerciseByIdUseCase
+import com.example.gymify.home.domain.usecases.exercise.GetExerciseWithStatsByIdUseCase
+import com.example.gymify.home.domain.usecases.exercise.GetExercisesByMuscleGroupUseCase
+import com.example.gymify.home.domain.usecases.exercise.UpsertExerciseUseCase
+import com.example.gymify.home.domain.usecases.exercise_stats.GetExerciseStatsUseCase
+import com.example.gymify.home.domain.usecases.exercise_stats.UpdateLastWeightUseCase
+import com.example.gymify.home.domain.usecases.exercise_stats.UpdateMaxWeightUseCase
+import com.example.gymify.home.domain.usecases.exercise_stats.UpsertExerciseStatsUseCase
+import com.example.gymify.home.domain.usecases.workout_exercise.DeleteWorkoutExerciseByIdUseCase
+import com.example.gymify.home.domain.usecases.workout_exercise.DeleteWorkoutExerciseUseCase
+import com.example.gymify.home.domain.usecases.workout_exercise.GetFullExercisesForWorkoutPlanUseCase
+import com.example.gymify.home.domain.usecases.workout_exercise.GetWorkoutExerciseByIdUseCase
+import com.example.gymify.home.domain.usecases.workout_exercise.GetWorkoutExercisesByPlanIdUseCase
+import com.example.gymify.home.domain.usecases.workout_exercise.GetWorkoutExerciseWithExerciseUseCase
+import com.example.gymify.home.domain.usecases.workout_exercise.UpsertWorkoutExerciseUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.DeleteWorkoutPlanByIdUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.DeleteWorkoutPlanUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetAllWorkoutPlansByExpertiseLevel
+import com.example.gymify.home.domain.usecases.workout_plan.GetAllWorkoutPlansUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetAllWorkoutPlansWithFullExercisesUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetPredefinedWorkoutPlansUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetUserDefinedWorkoutPlansUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetWorkoutPlanByIdUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetWorkoutPlanWithFullExercisesUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetWorkoutPlanWithSessionsUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetWorkoutPlanWithWorkoutExercisesUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.GetWorkoutPlansWithWorkoutExercisesUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.IsWorkoutPlanInDatabaseUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.UpdateLastUsedDateUseCase
+import com.example.gymify.home.domain.usecases.workout_plan.UpsertWorkoutPlanUseCase
+import com.example.gymify.home.domain.usecases.workout_session.DeleteWorkoutSessionByIdUseCase
+import com.example.gymify.home.domain.usecases.workout_session.GetSessionsByPlanIdUseCase
+import com.example.gymify.home.domain.usecases.workout_session.GetSessionsByTimeRangeUseCase
+import com.example.gymify.home.domain.usecases.workout_session.GetWorkoutSessionByIdUseCase
+import com.example.gymify.home.domain.usecases.workout_session.UpsertWorkoutSessionUseCase
 import com.example.gymify.sign_up.domain.manager.LocalUserInfoManager
 import dagger.Module
 import dagger.Provides
@@ -106,6 +108,10 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideTimeRangeUtils(): TimeRangeUtils = TimeRangeUtils()
+
+    @Provides
+    @Singleton
     fun provideAppCoreUseCases(
         appCoreManager: AppCoreManager
     ): AppCoreUseCases = AppCoreUseCases(
@@ -149,7 +155,7 @@ object AppModule {
     ): WorkoutExerciseUseCases = WorkoutExerciseUseCases(
         upsertWorkoutExerciseUseCase = UpsertWorkoutExerciseUseCase(repository),
         deleteWorkoutExerciseUseCase = DeleteWorkoutExerciseUseCase(repository),
-        getWorkoutExerciseByPlanIdUseCase = GetWorkoutExerciseByPlanIdUseCase(repository),
+        getWorkoutExercisesByPlanIdUseCase = GetWorkoutExercisesByPlanIdUseCase(repository),
         getWorkoutExerciseWithExerciseUseCase = GetWorkoutExerciseWithExerciseUseCase(repository),
         deleteWorkoutExerciseByIdUseCase = DeleteWorkoutExerciseByIdUseCase(repository),
         getFullExercisesForWorkoutPlanUseCase = GetFullExercisesForWorkoutPlanUseCase(repository),
@@ -174,7 +180,8 @@ object AppModule {
         getPredefinedWorkoutPlansUseCase = GetPredefinedWorkoutPlansUseCase(repository),
         deleteWorkoutPlanByIdUseCase = DeleteWorkoutPlanByIdUseCase(repository),
         getUserDefinedWorkoutPlansUseCase = GetUserDefinedWorkoutPlansUseCase(repository),
-        updateLastUsedDateUseCase = UpdateLastUsedDateUseCase(repository)
+        updateLastUsedDateUseCase = UpdateLastUsedDateUseCase(repository),
+        isWorkoutPlanInDatabaseUseCase = IsWorkoutPlanInDatabaseUseCase(repository)
     )
 
     @Provides
