@@ -437,10 +437,18 @@ object ExerciseNameMapper {
 
 
 object WorkoutPlanNameMapper {
-    // TODO сделать name map полностью
     private val nameMap: Map<String, Int> = mapOf(
         // Встроенные планы тренировок
-        WorkoutPlanKeys.FULL_BODY_FIRST to R.string.muscle_chest, // Временно используем существующий ресурс
+        WorkoutPlanKeys.FULL_BODY_FIRST to R.string.muscle_chest,
+
+        // PPL
+        WorkoutPlanKeys.PPL_PUSH_FIRST to R.string.workout_ppl_push_first,
+        WorkoutPlanKeys.PPL_PULL_FIRST to R.string.workout_ppl_pull_first,
+        WorkoutPlanKeys.PPL_LEGS_FIRST to R.string.workout_ppl_legs_first,
+
+        // Upper Lower
+        WorkoutPlanKeys.UPPER_FIRST to R.string.workout_upper_first,
+        WorkoutPlanKeys.LOWER_FIRST to R.string.workout_lower_first
     )
 
     fun getName(nameId: String): Int {
@@ -449,26 +457,22 @@ object WorkoutPlanNameMapper {
 }
 
 object WorkoutPlanIconMapper {
-    // TODO сделать icon map полностью
     private val iconMap: Map<String, Int> = mapOf(
-        WorkoutPlanKeys.FULL_BODY_FIRST to R.drawable.muscle_chest
+        WorkoutPlanKeys.FULL_BODY_FIRST to R.drawable.icon_banner_workout_plan,
+
+        // PPL
+        WorkoutPlanKeys.PPL_PUSH_FIRST to R.drawable.image_workout_plan_ppl_push_01,
+        WorkoutPlanKeys.PPL_PULL_FIRST to R.drawable.image_workout_plan_ppl_pull_01,
+        WorkoutPlanKeys.PPL_LEGS_FIRST to R.drawable.image_workout_plan_ppl_legs_01,
+
+        // Upper Lower
+        WorkoutPlanKeys.UPPER_FIRST to R.drawable.image_workout_plan_upper_01,
+        WorkoutPlanKeys.LOWER_FIRST to R.drawable.image_workout_plan_lower_01,
     )
 
     fun getName(nameKey: String): Int {
-        return iconMap[nameKey] ?: R.drawable.muscle_chest
+        return iconMap[nameKey] ?: R.drawable.icon_banner_workout_plan
     }
-
-// Старый юз кейс, убрано, тестируется...
-//    fun getIconIdByPlanNameId(workoutPlanNameId: String): String? {
-//        return when (workoutPlanNameId) {
-//            WorkoutPlanKeys.FULL_BODY_FIRST -> WorkoutPlanKeys.FULL_BODY_FIRST
-//            "intermediate_push_pull" -> "ic_intermediate_plan"
-//            "advanced_split" -> "ic_advanced_plan"
-//            "strength_training" -> "ic_strength_plan"
-//            "cardio_hiit" -> "ic_cardio_plan"
-//            else -> null
-//        }
-//    }
 }
 
 // Утилитарная функция для получения отображаемого имени плана (Display Name for UI)

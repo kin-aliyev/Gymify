@@ -54,7 +54,7 @@ fun WorkoutPlanBanner(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(230.dp)
     ) {
         when {
             imagePath != null -> {
@@ -81,13 +81,13 @@ fun WorkoutPlanBanner(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.TopCenter)
-                .padding(top = 20.dp)
+                .padding(top = 36.dp)
                 .padding(horizontal = 16.dp)
         ) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .size(40.dp)
+                    .size(42.dp)
                     .clip(shape = RoundedCornerShape(10.dp))
                     .background(color = MaterialTheme.colorScheme.surface)
                     .clickable(onClick = onNavigateBackClick, role = Role.Button)
@@ -101,13 +101,14 @@ fun WorkoutPlanBanner(
             }
 
             Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.End
             ) {
 
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .size(40.dp)
+                        .size(42.dp)
                         .clip(shape = RoundedCornerShape(10.dp))
                         .background(color = MaterialTheme.colorScheme.surface)
                         .clickable(onClick = { showEditDialog = true }, role = Role.Button)
@@ -125,7 +126,7 @@ fun WorkoutPlanBanner(
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
-                            .size(40.dp)
+                            .size(42.dp)
                             .clip(shape = RoundedCornerShape(10.dp))
                             .background(color = MaterialTheme.colorScheme.surface)
                             .clickable(onClick = { showDeleteDialog = true }, role = Role.Button)

@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class GetThemeModeUseCase(
     private val appCoreManager: AppCoreManager
 ) {
-    operator fun invoke(): Flow<ThemeMode> = appCoreManager.themeModeFlow
-
+    operator fun invoke(): Flow<ThemeMode> {
+        return appCoreManager.themeModeFlow
+    }
 }

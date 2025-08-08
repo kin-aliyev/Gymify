@@ -17,11 +17,11 @@ interface WorkoutPlanRepository {
 
     suspend fun getWorkoutPlanById(planId: Int): WorkoutPlan?
 
-    suspend fun getAllWorkoutPlans(): List<WorkoutPlan>
+    fun getAllWorkoutPlans(): Flow<List<WorkoutPlan>>
 
     suspend fun getPredefinedWorkoutPlans(): List<WorkoutPlan>
 
-    suspend fun getUserDefinedWorkoutPlans(): List<WorkoutPlan>
+    fun getUserDefinedWorkoutPlans(): Flow<List<WorkoutPlan>>
 
     suspend fun updateLastUsedDate(workoutPlanId: Int, timestamp: Long)
 

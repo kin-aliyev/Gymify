@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gymify</string>
+    <string name="app_name_title">Gymify!</string>
+
+    <string name="welcome_start_button">Başla</string>
+    <string name="welcome_title">Xoş gəlmisiniz</string>
+
+    <string name="gender_question">Cinsiyyətiniz nədir?</string>
+    <string name="gender_male">Kişi</string>
+    <string name="gender_female">Qadın</string>
+    <string name="gender_other">Digər</string>
+
+    <string name="title_your_workout_plans">Planlarınız</string>
+    <string name="title_make_workout_plan">Plan Hazırla</string>
+
+    <string name="button_continue">Davam et</string>
+    <string name="button_finish">Bitir</string>
+
+    <string name="unit_ft">ft</string>
+    <string name="unit_cm">sm</string>
+    <string name="unit_lbs">lbs</string>
+    <string name="unit_kg">kq</string>
+
+    <string name="your_workout_plans">Planlarınız</string>
+    <string name="workout_program">İdman Proqramı</string>
+
+    <string name="your_expertise_level">Səviyyəniz</string>
+    <string name="level_beginner">Yeni başlayan</string>
+    <string name="level_intermediate">Orta səviyyə</string>
+    <string name="level_advanced">Peşəkar</string>
+    <string name="level_undeclared">Naməlum səviyyə</string>
+
+    <string name="you_can_change_in_the_settings">Bunu ayarlarda dəyişə bilərsiniz</string>
+    <string name="enter_your_height">Boyunuzu daxil edin</string>
+    <string name="finish">Bitir</string>
+
+    <string name="tab_plan_name">Planın adı</string>
+    <string name="tab_muscle_group">Əzələ qrupu</string>
+    <string name="tab_number_of_sets">Set sayı</string>
+    <string name="tab_number_of_reps">Təkrar sayı</string>
+    <string name="tab_working_weight">Çəki</string>
+
+    <string name="muscle_chest">Sinə</string>
+    <string name="muscle_back">Bel</string>
+    <string name="muscle_biceps">Biseps</string>
+    <string name="muscle_triceps">Triseps</string>
+    <string name="muscle_shoulders">Çiyin</string>
+    <string name="muscle_legs">Ayaqlar</string>
+    <string name="muscle_abdominals">Qarın</string>
+    <string name="no_muscle_group_selected">Əzələ qrupu seçin</string>
+
+    <string name="user_preferences">İstifadəçi Ayarları</string>
+    <string name="theme_light">Aydın</string>
+    <string name="theme_dark">Qaranlıq</string>
+    <string name="theme_system">Sistemə uyğun</string>
+    <string name="group">%1$s Qrupu</string>
+    <string name="unknown_exercise">Naməlum hərəkət</string>
+
+    <string name="exercise_back_barbell_row_overhand">Üstü açıq ştanqa dartışı</string>
+    <string name="exercise_back_barbell_sumo_deadlift">Sumo deadlift</string>
+    <string name="exercise_back_seated_cable_row">Oturaraq kabel dartışı</string>
+    <string name="exercise_back_t_bar_row">T-ştanqa dartışı</string>
+    <string name="exercise_back_lat_pulldown_wide_grip">Geniş tutuşla lat dartışı</string>
+    <string name="exercise_back_lat_pulldown_close_grip_underhand">Dar tutuşla lat dartışı</string>
+    <string name="exercise_back_dumbbell_row">Gantellə dartış</string>
+    <string name="exercise_back_barbell_row_underhand">Altı açıq ştanqa dartışı</string>
+    <string name="exercise_back_cable_pullover">Kabel ilə pullover</string>
+    <string name="exercise_back_pulldown_underhand">Altı açıq lat dartışı</string>
+    <string name="exercise_back_two_arm_dumbbell_row">İki əl gantel dartışı</string>
+    <string name="exercise_back_pullup">Üzürək dartış</string>
+    <string name="exercise_back_pullup_underhand">Altı açıq dartış</string>
+    <string name="exercise_back_barbell_shrug">Ştanqa çiyin qaldırışı</string>
+    <string name="exercise_back_barbell_deadlift">Ştanqa deadlift</string>
+    <string name="exercise_back_trap_bar_deadlift">Trap bar deadlift</string>
+    <string name="exercise_back_lat_pulldown_behind_neck">Boyun arxası lat dartışı</string>
+    <string name="exercise_back_barbell_pullover">Ştanqa pullover</string>
+    <string name="exercise_back_dumbbell_deadlift">Gantel deadlift</string>
+    <string name="exercise_back_dumbbell_pullover">Gantel pullover</string>
+    <string name="exercise_back_dumbbell_shrugs">Gantel çiyin qaldırışı</string>
+    <string name="exercise_back_extension">Arxa uzatma</string>
+
+    <string name="exercise_biceps_barbell_curl">Ştanqa biseps qıvrımı</string>
+    <string name="exercise_biceps_ez_barbell_curl">EZ-ştanqa qıvrımı</string>
+    <string name="exercise_biceps_preacher_barbell_curl">Müəllim ştanqa qıvrımı</string>
+    <string name="exercise_biceps_rope_cable_curl">Kabel ip qıvrımı</string>
+    <string name="exercise_biceps_dumbbell_alternate_curl">Gantel növbəli qıvrım</string>
+    <string name="exercise_biceps_dumbbell_concentration_curl">Gantel konsentrasiya qıvrımı</string>
+    <string name="exercise_biceps_incline_dumbbell_curl">Maili gantel qıvrımı</string>
+    <string name="exercise_biceps_single_arm_low_cable_curl">Tək əl kabel qıvrımı</string>
+    <string name="exercise_biceps_standing_two_arm_high_cable_curl">Ayaq üstü 2 əl kabel qıvrımı</string>
+    <string name="exercise_biceps_straight_bar_low_cable_curl">Düz ştanqa kabel qıvrımı</string>
+    <string name="exercise_biceps_dumbbell_crossbody_hammer_curl">Gantel çəkic qıvrımı</string>
+    <string name="exercise_biceps_barbell_reverse_curl">Ştanqa tərs qıvrımı</string>
+
+    <string name="exercise_triceps_parallel_dip_bar">Paralel dip barı</string>
+    <string name="exercise_triceps_seated_barbell_french_press">Oturaraq ştanqa pressi</string>
+    <string name="exercise_triceps_underhand_bar_cable_extension">Altı açıq kabel pressi</string>
+    <string name="exercise_triceps_single_arm_cable_extension_overhand">1 əl üstü kabel pressi</string>
+    <string name="exercise_triceps_single_arm_cable_extension_underhand">1 əl altı kabel pressi</string>
+    <string name="exercise_triceps_bench_dip">Diz üstü dip</string>
+    <string name="exercise_triceps_seated_dumbbell_overhead_extension">Oturaraq gantel pressi</string>
+    <string name="exercise_triceps_dumbbell_kickback">Gantel arxa uzatma</string>
+    <string name="exercise_triceps_dumbbell_french_press">Gantel fransız pressi</string>
+    <string name="exercise_triceps_cable_rope_pushdown">Kabel ip pressi</string>
+    <string name="exercise_triceps_barbell_french_press">Ştanqa fransız pressi</string>
+    <string name="exercise_triceps_close_grip_bench_press">Dar tutuşlu bench press</string>
+    <string name="exercise_triceps_bar_pushdown_overhand">Üstü açıq bar pressi</string>
+
+    <!-- Sinə -->
+    <string name="exercise_chest_push_up">Şınlar</string>
+    <string name="exercise_chest_incline_dumbbell_fly">Maili ganta açışı</string>
+    <string name="exercise_chest_barbell_declined_bench_press">Aşağı ştanqa pressi</string>
+    <string name="exercise_chest_dumbbell_bench_press">Gantel ilə sinə pressi</string>
+    <string name="exercise_chest_barbell_bench_press">Ştanqa ilə sinə pressi</string>
+    <string name="exercise_chest_press_machine">Trenaqorda press</string>
+    <string name="exercise_chest_cable_crossover">Krossover</string>
+    <string name="exercise_chest_flat_dumbbell_fly">Yastı ganta açışı</string>
+    <string name="exercise_chest_incline_barbell_bench_press">Maili ştanqa pressi</string>
+    <string name="exercise_chest_peck_deck_fly">Pek-dek aparatı</string>
+    <string name="exercise_chest_dumbbell_declined_bench_press">Aşağı gantel pressi</string>
+
+    <!-- Çiyin -->
+    <string name="exercise_shoulders_smith_machine_press">Smith pressi</string>
+    <string name="exercise_shoulders_barbell_push_press">Ştanqa şvungu</string>
+    <string name="exercise_shoulders_dumbbell_lateral_raise">Yan ganta qaldırışı</string>
+    <string name="exercise_shoulders_dumbbell_front_raise">Ön ganta qaldırışı</string>
+    <string name="exercise_shoulders_seated_dumbbell_press">Oturaraq gantel pressi</string>
+    <string name="exercise_shoulders_barbell_upright_row">Dik ştanqa dartışı</string>
+    <string name="exercise_shoulders_standing_bent_over_lateral_raise">Əyilərək yan açış</string>
+    <string name="exercise_shoulders_single_arm_cable_front_raise">Tək əl ön dartış</string>
+    <string name="exercise_shoulders_high_cable_rear_delt_fly">Yuxarı dartma açış</string>
+    <string name="exercise_shoulders_single_arm_cable_lateral_raise">Tək yan dartma</string>
+    <string name="exercise_shoulders_dumbbell_push_press">Gantel şvungu</string>
+    <string name="exercise_shoulders_barbell_front_raise">Ştanqa ön qaldırış</string>
+    <string name="exercise_shoulders_seated_barbell_press">Oturaraq ştanqa press</string>
+    <string name="exercise_shoulders_two_handed_dumbbell_front_raise">İki əl ön qaldırış</string>
+
+    <!-- Press -->
+    <string name="exercise_abs_crunch_machine">Karnit trenajoru</string>
+    <string name="exercise_abs_crunch">Qarın hərəkəti</string>
+    <string name="exercise_abs_oblique_crunch">Yanal qarın hərəkəti</string>
+    <string name="exercise_abs_reverse_crunch">Tərs qarın hərəkəti</string>
+    <string name="exercise_abs_hanging_leg_raise">Asılaraq ayaq qaldırma</string>
+    <string name="exercise_abs_rope_pulldown">İp ilə qarın pressi</string>
+    <string name="exercise_abs_plank_get_up">Plankdan qalxma</string>
+    <string name="exercise_abs_plank">Plank</string>
+    <string name="exercise_abs_wheel_rollout">Təkər ilə açış</string>
+    <string name="exercise_abs_decline_leg_raise">Maili ayaq qaldırma</string>
+
+    <!-- Ayaqlar -->
+    <string name="exercise_legs_extension">Ayaq uzatması</string>
+    <string name="exercise_legs_barbell_squat">Ştanqa ilə çökmə</string>
+    <string name="exercise_legs_barbell_romanian_deadlift">Rumın ştanqa dartışı</string>
+    <string name="exercise_legs_glute_ham_raise">Glute-ham dartışı</string>
+    <string name="exercise_legs_standing_resistance_band_kickback">Rez ilə geri itələmə</string>
+    <string name="exercise_legs_lunge">Lanç</string>
+    <string name="exercise_legs_barbell_good_morning">Good Morning (ştanqa)</string>
+    <string name="exercise_legs_dumbbell_goblet_squat">Qobel çökmə</string>
+    <string name="exercise_legs_dumbbell_step_up">Gantel ilə addım</string>
+    <string name="exercise_legs_donkey_kicks">Eşşək təpiyi</string>
+    <string name="exercise_legs_hack_squat">Hack çökmə</string>
+    <string name="exercise_legs_lying_leg_curl">Uzun ayaq bükməsi</string>
+    <string name="exercise_legs_seated_leg_curl">Oturmuş ayaq bükməsi</string>
+    <string name="exercise_legs_kettlebell_swing">Kettlebell yellətmə</string>
+    <string name="exercise_legs_side_lying_leg_raise">Yan uzanmış qaldırış</string>
+    <string name="exercise_legs_banded_glute_bridge">Lentli qlute körpü</string>
+    <string name="exercise_legs_bodyweight_glute_bridge">Qlute körpü (çəkisiz)</string>
+    <string name="exercise_legs_single_leg_extension">Tək ayaq uzatması</string>
+    <string name="exercise_legs_lateral_band_walk">Yan lent gəzintisi</string>
+    <string name="exercise_legs_barbell_front_squat">Ştanqa ön çökmə</string>
+    <string name="exercise_legs_dumbbell_romanian_deadlift">Gantel rumın dartışı</string>
+    <string name="exercise_legs_bodyweight_squat">Çəki ilə çökmə</string>
+    <string name="exercise_legs_medicine_ball_squat">Top ilə çökmə</string>
+    <string name="exercise_legs_barbell_bulgarian_split_squat">Bolqar çökmə (ştanqa)</string>
+    <string name="exercise_legs_kettlebell_sumo_deadlift">Sumo dartışı (kettl)</string>
+    <string name="exercise_legs_single_leg_bodyweight_deadlift">Tək ayaq dartışı</string>
+    <string name="exercise_legs_barbell_hip_thrust">Ştanqa itələmə</string>
+    <string name="exercise_legs_mini_band_squat">Mini lent çökmə</string>
+    <string name="exercise_legs_cable_hip_abduction">Kabel ilə ayaq açışı</string>
+    <string name="exercise_legs_jump_squat">Tullanaraq çökmə</string>
+    <string name="exercise_legs_wall_sit">Divara oturma</string>
+    <string name="exercise_legs_banded_clamshell">Mollusk (lent ilə)</string>
+    <string name="exercise_legs_bodyweight_bulgarian_split_squat">Bolqar çökmə (çəki yox)</string>
+    <string name="exercise_legs_leg_press">Ayaq pressi</string>
+    <string name="exercise_legs_medicine_ball_deadlift">Top ilə dartma</string>
+    <string name="exercise_legs_seated_calf_raise">Oturaq baldır qaldır</string>
+    <string name="exercise_legs_standing_calf_raise">Ayaqda baldır qaldır</string>
+</resources>

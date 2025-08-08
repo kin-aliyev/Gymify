@@ -10,7 +10,7 @@ data class MakeWorkoutPlanState(
     val isPredefinedPlan: Boolean = false,       // Получаю через loadExistingWorkout()
     val workoutPlanId: Int = 0,                  // Устанавливаю через currentWorkoutRepository.
 
-    val workoutPlanName: String? = null,            // User Defined Plan Name
+    val workoutPlanName: String? = null,         // User Defined Plan Name
     val workoutPlanIconUri: String? = null,      // User Defined Plan Uri
 
     val workoutPlanNameId: String? = null,       // Predefined Plan String Res

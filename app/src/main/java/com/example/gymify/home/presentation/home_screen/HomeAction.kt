@@ -4,7 +4,7 @@ import com.example.gymify.home.domain.model.WorkoutPlan
 
 sealed interface HomeAction {
     object OnAddNewWorkoutClick : HomeAction
-
     data class OnWorkoutPlanClick(val workoutPlan: WorkoutPlan) : HomeAction
 
+    data class OnPredefinedWorkoutPlanClick(val workoutPlanNameId: String) : HomeAction
 }

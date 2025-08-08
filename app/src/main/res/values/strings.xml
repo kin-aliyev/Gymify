@@ -43,6 +43,14 @@
     <string name="enter_your_height">Enter your height</string>
     <string name="finish">Finish</string>
 
+    <!-- Workout Plans -->
+    <string name="workout_ppl_push_first">PPL – Push Day</string>
+    <string name="workout_ppl_pull_first">PPL – Pull Day</string>
+    <string name="workout_ppl_legs_first">PPL – Leg Day</string>
+
+    <string name="workout_upper_first">Upper Split 1</string>
+    <string name="workout_lower_first">Lower Split 1</string>
+
     <!-- Option Tabs -->
     <string name="tab_plan_name">Plan Name</string>
     <string name="tab_muscle_group">Muscle Group</string>

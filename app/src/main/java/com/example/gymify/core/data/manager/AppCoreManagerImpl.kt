@@ -20,37 +20,31 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = DataStoreNames.APP)
+private val Context.appPreferencesDataStore: DataStore<Preferences> by preferencesDataStore(name = DataStoreNames.APP)
 
 class AppCoreManagerImpl(
     private val context: Context,
 ) : AppCoreManager {
+
     override suspend fun saveRegistrationStatus(isRegistered: Boolean) {
-        context.dataStore.edit { appPreferences ->
+        context.appPreferencesDataStore.edit { appPreferences ->
             appPreferences[CorePreferencesKeys.REGISTRATION] = isRegistered
         }
     }
 
     override fun readRegistrationStatus(): Flow<Boolean> {
-        return context.dataStore.data.map { appPreferences ->
+        return context.appPreferencesDataStore.data.map { appPreferences ->
             appPreferences[CorePreferencesKeys.REGISTRATION] ?: false
         }
     }
 
-    override suspend fun getThemeMode(): ThemeMode {
-        return context.dataStore.data.first().let { appPreferences ->
-            val themeOrdinal = appPreferences[CorePreferencesKeys.THEME_MODE] ?: ThemeMode.SYSTEM.ordinal
-            ThemeMode.fromOrdinal(themeOrdinal)
-        }
-    }
-
     override suspend fun setThemeMode(themeMode: ThemeMode) {
-        context.dataStore.edit { appPreferences ->
+        context.appPreferencesDataStore.edit { appPreferences ->
             appPreferences[CorePreferencesKeys.THEME_MODE] = themeMode.ordinal
         }
     }
 
-    override val themeModeFlow: Flow<ThemeMode> = context.dataStore.data
+    override val themeModeFlow: Flow<ThemeMode> = context.appPreferencesDataStore.data
         .catch { exception ->
             if (exception is IOException) {
                 Log.e("ThemeRepository", "Error reading preferences", exception)
@@ -64,19 +58,14 @@ class AppCoreManagerImpl(
             ThemeMode.fromOrdinal(themeOrdinal)
         }
 
-    override suspend fun getLanguage(): String {
-        return context.dataStore.data.map { appPreferences ->
-            appPreferences[CorePreferencesKeys.LANGUAGE_KEY] ?: "en"
-        }.first()
-    }
 
     override suspend fun setLanguage(language: String) {
-        context.dataStore.edit { appPreferences ->
+        context.appPreferencesDataStore.edit { appPreferences ->
             appPreferences[CorePreferencesKeys.LANGUAGE_KEY] = language
         }
     }
 
-    override val languageFlow: Flow<String> = context.dataStore.data
+    override val languageFlow: Flow<String> = context.appPreferencesDataStore.data
         .catch { exception ->
             if (exception is IOException) {
                 Log.e("LanguageRepository", "Error reading language preferences", exception)

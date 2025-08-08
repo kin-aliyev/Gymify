@@ -1,116 +1,155 @@
 package com.example.gymify.core.data.manager
 
 import android.content.Context
-import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.gymify.core.util.DataStoreNames
 import com.example.gymify.core.util.UserInfoPreferenceKeys
-import com.example.gymify.sign_up.domain.manager.LocalUserInfoManager
+import com.example.gymify.core.domain.manager.LocalUserInfoManager
 import com.example.gymify.core.domain.model.ExpertiseLevel
-import com.example.gymify.sign_up.domain.model.UserGender
+import com.example.gymify.core.domain.model.UserGender
 import com.example.gymify.core.domain.model.UserHeightUnit
 import com.example.gymify.core.domain.model.UserWeightUnit
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = DataStoreNames.USER_INFO)
+private val Context.userPreferencesDataStore: DataStore<Preferences> by preferencesDataStore(name = DataStoreNames.USER_INFO)
 
 class LocalUserInfoManagerImpl(
     private val context: Context,
 ) : LocalUserInfoManager {
 
-    // Pick Gender Screen Actions
+    // User Age pref
+    override suspend fun saveUserAge(userAge: Int) {
+        context.userPreferencesDataStore.edit {userPreferences ->
+            userPreferences[UserProfilePreferencesKeys.USER_AGE] = userAge
+        }
+    }
+
+    override fun readUserAge(): Flow<Int?> {
+        return context.userPreferencesDataStore.data.map { userPreferences ->
+            userPreferences[UserProfilePreferencesKeys.USER_AGE]
+        }
+    }
+
+    // User Gender pref
     override suspend fun saveUserGender(userGender: UserGender) {
-        context.dataStore.edit { userInfo ->
+        context.userPreferencesDataStore.edit { userInfo ->
             userInfo[SignUpPreferencesKeys.GENDER] = userGender.genderId
         }
-
     }
 
     override fun readUserGender(): Flow<UserGender> {
-        return context.dataStore.data.map { userInfo ->
+        return context.userPreferencesDataStore.data.map { userInfo ->
             val genderId = userInfo[SignUpPreferencesKeys.GENDER] ?: UserGender.MALE.genderId
             UserGender.entries.first { it.genderId == genderId }
         }
     }
 
-    // Pick Height Screen Actions
+    // User Height pref
     override suspend fun saveUserHeight(userHeight: Float) {
-        context.dataStore.edit { userInfo ->
+        context.userPreferencesDataStore.edit { userInfo ->
             userInfo[SignUpPreferencesKeys.HEIGHT] = userHeight
         }
-
-        Log.d("DataStore", "User Weight saved: $userHeight")
     }
 
     override fun readUserHeight(): Flow<Float> {
-        return context.dataStore.data.map { userInfo ->
+        return context.userPreferencesDataStore.data.map { userInfo ->
             userInfo[SignUpPreferencesKeys.HEIGHT] ?: 170f
         }
     }
 
+    // User HeightUnit pref
     override suspend fun saveUserHeightUnit(userHeightUnit: UserHeightUnit) {
-        context.dataStore.edit { userInfo ->
+        context.userPreferencesDataStore.edit { userInfo ->
             userInfo[SignUpPreferencesKeys.HEIGHT_UNIT] = userHeightUnit.unitId
         }
-
-        Log.d("DataStore", "User Weight Unit saved: ${userHeightUnit.unitId} (${userHeightUnit.name})")
     }
 
     override fun readUserHeightUnit(): Flow<UserHeightUnit> {
-        return context.dataStore.data.map { userInfo ->
+        return context.userPreferencesDataStore.data.map { userInfo ->
             val unitId = userInfo[SignUpPreferencesKeys.HEIGHT_UNIT] ?: UserHeightUnit.CM.unitId
             UserHeightUnit.entries.first{ it.unitId == unitId}
         }
     }
 
+    // User Weight pref
     override suspend fun saveUserWeight(userWeight: Float) {
-        context.dataStore.edit { userInfo ->
+        context.userPreferencesDataStore.edit { userInfo ->
             userInfo[SignUpPreferencesKeys.WEIGHT] = userWeight
         }
 
-        Log.d("DataStore", "User Weight saved: $userWeight")
     }
 
     override fun readUserWeight(): Flow<Float> {
-        return context.dataStore.data.map { userInfo ->
+        return context.userPreferencesDataStore.data.map { userInfo ->
             userInfo[SignUpPreferencesKeys.WEIGHT] ?: 60f
         }
     }
 
+    // User WeightUnit pref
     override suspend fun saveUserWeightUnit(userWeightUnit: UserWeightUnit) {
-        context.dataStore.edit { userInfo ->
+        context.userPreferencesDataStore.edit { userInfo ->
             userInfo[SignUpPreferencesKeys.WEIGHT_UNIT] = userWeightUnit.unitId
         }
-
-        Log.d("DataStore", "User Weight Unit saved: ${userWeightUnit.unitId} (${userWeightUnit.name})")
     }
 
     override fun readUserWeightUnit(): Flow<UserWeightUnit> {
-        return context.dataStore.data.map { userInfo ->
+        return context.userPreferencesDataStore.data.map { userInfo ->
             val unitId = userInfo[SignUpPreferencesKeys.WEIGHT_UNIT]  ?: UserWeightUnit.KG.unitId
-            UserWeightUnit.entries.first() {it.unitId == unitId}
+            UserWeightUnit.entries.first { it.unitId == unitId }
         }
     }
 
+    // User ExpertiseLevel pref
     override suspend fun saveUserExpertiseLevel(expertiseLevel: ExpertiseLevel) {
-        context.dataStore.edit { userInfo ->
+        context.userPreferencesDataStore.edit { userInfo ->
             userInfo[SignUpPreferencesKeys.EXPERTISE_LEVEL] = expertiseLevel.expertiseId
         }
     }
 
     override fun readUserExpertiseLevel(): Flow<ExpertiseLevel> {
-        return context.dataStore.data.map { userInfo ->
+        return context.userPreferencesDataStore.data.map { userInfo ->
             val expertiseId = userInfo[SignUpPreferencesKeys.EXPERTISE_LEVEL] ?: ExpertiseLevel.BEGINNER.expertiseId
             ExpertiseLevel.entries.first { it.expertiseId == expertiseId}
         }
     }
+
+    override suspend fun saveUserProfilePicture(uri: String) {
+        context.userPreferencesDataStore.edit { userPreferences ->
+            userPreferences[UserProfilePreferencesKeys.PROFILE_PICTURE_URI] = uri
+        }
+    }
+
+    override fun readUserProfilePicture(): Flow<String?> {
+        return context.userPreferencesDataStore.data.map { userPreferences ->
+            userPreferences[UserProfilePreferencesKeys.PROFILE_PICTURE_URI]
+        }
+    }
+
+    override suspend fun saveUserName(name: String) {
+        context.userPreferencesDataStore.edit { userPreferences ->
+            userPreferences[UserProfilePreferencesKeys.USER_NAME] = name
+        }
+    }
+
+    override fun readUserName(): Flow<String?> {
+        return context.userPreferencesDataStore.data.map { userPreferences ->
+            userPreferences[UserProfilePreferencesKeys.USER_NAME]
+        }
+    }
+}
+
+private object UserProfilePreferencesKeys {
+    val USER_AGE = intPreferencesKey(name = UserInfoPreferenceKeys.AGE)
+    val USER_NAME = stringPreferencesKey(name = UserInfoPreferenceKeys.NAME)
+    val PROFILE_PICTURE_URI = stringPreferencesKey(name = UserInfoPreferenceKeys.PROFILE_PICTURE_URI)
 }
 
 private object SignUpPreferencesKeys {

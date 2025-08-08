@@ -2,6 +2,7 @@ package com.example.gymify.home.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -51,13 +52,6 @@ fun IconTopBar(
                     .size(60.dp)
                     .padding(start = 12.dp)
             )
-//            Icon(
-//                painter = painterResource(R.drawable.top_app_bar_icon),
-//                contentDescription = null,
-//                modifier = Modifier
-//                    .size(60.dp)
-//                    .padding(start = 12.dp)
-//            )
         },
         scrollBehavior = scrollBehavior,
         modifier = modifier.fillMaxWidth()

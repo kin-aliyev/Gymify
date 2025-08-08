@@ -10,14 +10,13 @@ import com.example.gymify.home.data.local.predefined.PredefinedWorkoutPlans
 import com.example.gymify.home.util.getWorkoutPlanDisplayName
 import com.example.gymify.home.domain.model.ExerciseStats
 import com.example.gymify.home.domain.model.WorkoutExerciseWithExerciseInfo
-import com.example.gymify.home.domain.model.WorkoutPlan
 import com.example.gymify.home.domain.model.WorkoutSession
 import com.example.gymify.home.domain.usecases.ExerciseStatsUseCases
 import com.example.gymify.home.domain.usecases.ExerciseUseCases
 import com.example.gymify.home.domain.usecases.WorkoutExerciseUseCases
 import com.example.gymify.home.domain.usecases.WorkoutPlanUseCases
 import com.example.gymify.home.domain.usecases.WorkoutSessionUseCases
-import com.example.gymify.sign_up.domain.usecases.SignUpUseCases
+import com.example.gymify.signup.domain.usecases.SignUpUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Job

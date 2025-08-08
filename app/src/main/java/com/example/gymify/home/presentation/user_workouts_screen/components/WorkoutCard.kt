@@ -1,5 +1,7 @@
 package com.example.gymify.home.presentation.user_workouts_screen.components
 
+import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,15 +29,16 @@ import com.example.gymify.ui.theme.GymifyTheme
 import com.example.gymify.R
 import com.example.gymify.home.util.TimeConverter
 import com.example.gymify.home.domain.model.WorkoutPlan
+import com.example.gymify.home.util.WorkoutPlanIconMapper
+import com.example.gymify.home.util.WorkoutPlanNameMapper
 import com.example.gymify.ui.theme.rubikFontFamily
-
 
 
 @Composable
 fun WorkoutCard(
     modifier: Modifier = Modifier,
     workoutPlan: WorkoutPlan,
-    onWorkoutPlanClick: (Int) -> Unit
+    onWorkoutPlanClick: (Int) -> Unit,
 ) {
     val formattedDate = workoutPlan.lastUsedDate?.let {
         TimeConverter().convertLongToDate(
@@ -44,6 +47,7 @@ fun WorkoutCard(
         )
     }?.replaceFirstChar { it -> it.titlecase() } ?: "unknown date"
 
+    Log.d("User Workout Plans", "Workout Card - Workout plan: $workoutPlan")
 
     Box(
         modifier = modifier
@@ -52,15 +56,39 @@ fun WorkoutCard(
             .clip(shape = RoundedCornerShape(24.dp))
             .clickable(onClick = { onWorkoutPlanClick(workoutPlan.id) }, role = Role.Button)
     ) {
-        AsyncImage(
-            model = workoutPlan.iconUri,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxSize()
-                .align(Alignment.Center),
-            error = painterResource(R.drawable.icon_banner_workout_plan)
-        )
+        when {
+            workoutPlan.iconId != null -> {
+                Image(
+                    painter = painterResource(WorkoutPlanIconMapper.getName(workoutPlan.iconId)),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .align(Alignment.Center),
+                )
+            }
+            workoutPlan.iconUri != null -> {
+                AsyncImage(
+                    model = workoutPlan.iconUri,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .align(Alignment.Center)
+                )
+            }
+            else -> {
+                Image(
+                    painter = painterResource(R.drawable.icon_banner_workout_plan),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .align(Alignment.Center),
+                )
+            }
+        }
+
 
         Column(
             modifier = Modifier
@@ -68,7 +96,9 @@ fun WorkoutCard(
                 .padding(start = 14.dp, bottom = 20.dp)
         ) {
             Text(
-                text = workoutPlan.workoutPlanName ?: "Unnamed Workout Plan",
+                text = workoutPlan.workoutPlanName ?: workoutPlan.workoutPlanNameId?.let {
+                    stringResource(WorkoutPlanNameMapper.getName(it))
+                } ?: "Unnamed Workout Plan",
                 fontFamily = rubikFontFamily,
                 color = Color(0xFFEBEBEB),
                 fontWeight = FontWeight.Medium,

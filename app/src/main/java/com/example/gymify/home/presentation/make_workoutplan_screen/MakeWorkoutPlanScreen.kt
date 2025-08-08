@@ -55,6 +55,7 @@ import com.example.gymify.home.presentation.make_workoutplan_screen.components.O
 import com.example.gymify.home.presentation.make_workoutplan_screen.components.OptionTabSets
 import com.example.gymify.home.presentation.make_workoutplan_screen.components.OptionTabWeight
 import com.example.gymify.home.presentation.make_workoutplan_screen.components.UploadPhotoCard
+import com.example.gymify.home.util.WorkoutPlanNameMapper
 import com.example.gymify.ui.theme.GymifyTheme
 import com.example.gymify.ui.theme.rubikFontFamily
 
@@ -121,7 +122,10 @@ fun MakeWorkoutPlanScreen(
             item {
                 OptionTabSets(
                     optionName = stringResource(R.string.tab_plan_name),
-                    inputValue = state.workoutPlanName ?: "",
+                    inputValue = state.workoutPlanName
+                        ?: state.workoutPlanNameId?.let {
+                            stringResource(WorkoutPlanNameMapper.getName(it))
+                        } ?: "",
                     onInputValueChanged = {
                         onAction(
                             MakeWorkoutPlanAction.OnWorkoutPlanNameChanged(
@@ -300,6 +304,8 @@ fun MakeWorkoutPlanScreen(
                         fontWeight = FontWeight.Medium,
                         modifier = Modifier.fillMaxWidth()
                     )
+
+                    Spacer(Modifier.height(22.dp))
                 }
             }
         }

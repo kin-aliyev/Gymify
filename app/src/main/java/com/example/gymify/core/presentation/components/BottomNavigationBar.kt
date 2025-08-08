@@ -24,9 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.gymify.R
 import com.example.gymify.core.presentation.navigation.NavigationDestination
-import com.example.gymify.core.presentation.navigation.analytics.Analytics
-import com.example.gymify.core.presentation.navigation.home.Home
-import com.example.gymify.core.presentation.navigation.settings.Settings
+import com.example.gymify.analytics.navigation.Analytics
+import com.example.gymify.home.navigation.Home
+import com.example.gymify.settings.navigation.Settings
 import com.example.gymify.ui.theme.GymifyTheme
 
 @Composable

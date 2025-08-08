@@ -1,46 +1,45 @@
 package com.example.gymify.home.presentation.home_screen
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gymify.home.data.repository.util.CurrentWorkoutRepository
 import com.example.gymify.home.domain.usecases.WorkoutPlanUseCases
+import com.example.gymify.signup.domain.usecases.SignUpUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val currentWorkoutRepository: CurrentWorkoutRepository,
-    private val workoutPlanUseCases: WorkoutPlanUseCases
+    private val workoutPlanUseCases: WorkoutPlanUseCases,
+    private val signUpUseCases: SignUpUseCases,
 ): ViewModel() {
-    private val _state = mutableStateOf(HomeState())
-    val state: State<HomeState> = _state
 
-    init {
-        loadUserWorkoutPlans()
-    }
+    val state = combine(
+        workoutPlanUseCases.getAllWorkoutPlansUseCase(),
+        signUpUseCases.readUserExpertiseLevelUseCase()
+    ) { userWorkoutPlans, expertiseLevel ->
+        HomeState(userWorkoutPlans = userWorkoutPlans, userExpertiseLevel = expertiseLevel)
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.Eagerly,
+        initialValue = HomeState()
+    )
+
 
     fun onAction(action: HomeAction) {
         when(action) {
             is HomeAction.OnAddNewWorkoutClick -> {
                 currentWorkoutRepository.setCurrentWorkoutId(null)
             }
+            is HomeAction.OnWorkoutPlanClick -> Unit
 
-            is HomeAction.OnWorkoutPlanClick -> {
-//                currentWorkoutRepository.setCurrentWorkoutId(action.workoutPlan.id)
-            //   TODO скорее всего это придется убрать ведь при нажатии перейдет на другой экран
-            }
-        }
-    }
-
-    private fun loadUserWorkoutPlans() {
-        viewModelScope.launch {
-            val userWorkoutPlans = workoutPlanUseCases.getUserDefinedWorkoutPlansUseCase()
-            _state.value = _state.value.copy(
-                userWorkoutPlans = userWorkoutPlans
-            )
+            is HomeAction.OnPredefinedWorkoutPlanClick -> Unit
         }
     }
 }

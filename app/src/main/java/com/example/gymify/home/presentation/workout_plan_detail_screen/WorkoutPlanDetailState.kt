@@ -4,6 +4,8 @@ import com.example.gymify.core.domain.model.UserWeightUnit
 import com.example.gymify.home.domain.model.WorkoutExerciseWithExerciseInfo
 
 data class WorkoutPlanDetailState(
+    val isLoading: Boolean = true,
+    val isContentReady: Boolean = false,
     val userWeightUnit: UserWeightUnit = UserWeightUnit.KG,
 
     val workoutId: Int? = null,              // For User Defined plans (передается в Nav Graph)

@@ -28,13 +28,13 @@ interface WorkoutPlanDao {
     suspend fun getWorkoutPlanById(id: Int): WorkoutPlanEntity?
 
     @Query("SELECT * FROM workout_plans ORDER BY lastUsedDate DESC")
-    suspend fun getAllWorkoutPlans(): List<WorkoutPlanEntity>
+    fun getAllWorkoutPlans(): Flow<List<WorkoutPlanEntity>>
 
     @Query("SELECT * FROM workout_plans WHERE workoutPlanNameId IS NOT NULL")
     suspend fun getPredefinedWorkoutPlans(): List<WorkoutPlanEntity>
 
     @Query("SELECT * FROM workout_plans WHERE workoutPlanName IS NOT NULL")
-    suspend fun getUserDefinedWorkoutPlans(): List<WorkoutPlanEntity>
+    fun getUserDefinedWorkoutPlans(): Flow<List<WorkoutPlanEntity>>
 
     @Query("UPDATE workout_plans SET lastUsedDate = :timestamp WHERE id = :workoutPlanId")
     suspend fun updateLastUsedDate(workoutPlanId: Int, timestamp: Long)

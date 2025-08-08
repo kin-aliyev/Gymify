@@ -8,10 +8,10 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.example.gymify.core.presentation.navigation.analytics.analyticsNavGraph
-import com.example.gymify.core.presentation.navigation.home.homeNavGraph
-import com.example.gymify.core.presentation.navigation.settings.settingsNavGraph
-import com.example.gymify.core.presentation.navigation.sign_up.signUpNavGraph
+import com.example.gymify.analytics.navigation.analyticsNavGraph
+import com.example.gymify.home.navigation.homeNavGraph
+import com.example.gymify.settings.navigation.settingsNavGraph
+import com.example.gymify.signup.navigation.signUpNavGraph
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

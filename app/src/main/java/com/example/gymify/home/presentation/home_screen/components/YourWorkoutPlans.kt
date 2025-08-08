@@ -44,6 +44,7 @@ import com.example.gymify.R
 import com.example.gymify.home.util.TimeConverter
 import com.example.gymify.home.util.WorkoutPlanIconMapper
 import com.example.gymify.home.domain.model.WorkoutPlan
+import com.example.gymify.home.util.WorkoutPlanNameMapper
 import com.example.gymify.ui.theme.GymifyTheme
 import com.example.gymify.ui.theme.rubikFontFamily
 
@@ -114,7 +115,7 @@ fun YourWorkoutPlans(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(130.dp)
+                        .height(150.dp)
                         .border(
                             color = Color(0x80EBEBEB),
                             width = 3.dp,
@@ -156,12 +157,6 @@ fun YourWorkoutPlans(
                     verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
                     recentWorkoutPlans.forEach { workoutPlan ->
-//                        val expertiseLevel = when (workoutPlan.expertiseLevel) {
-//                            ExpertiseLevel.BEGINNER -> R.string.level_beginner
-//                            ExpertiseLevel.INTERMEDIATE -> R.string.level_intermediate
-//                            ExpertiseLevel.ADVANCED -> R.string.level_advanced
-//                            null -> R.string.level_undeclared
-//                        }
                         val formattedDate = workoutPlan.lastUsedDate?.let {
                             TimeConverter().convertLongToDate(
                                 timeStamp = it,
@@ -169,34 +164,38 @@ fun YourWorkoutPlans(
                             )
                         }?.replaceFirstChar { it -> it.titlecase() } ?: "unknown date"
 
+                        val name = workoutPlan.workoutPlanName
+                        val nameId = workoutPlan.workoutPlanNameId
+
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(130.dp)
+                                .height(150.dp)
                                 .clip(RoundedCornerShape(20.dp))
                                 .clickable(
                                     onClick = { onWorkoutPlanClick(workoutPlan) },
                                     role = Role.Button
                                 )
                         ) {
-                            workoutPlan.iconUri?.let {
+                            if (workoutPlan.iconUri != null) {
                                 AsyncImage(
-                                    model = it,
+                                    model = workoutPlan.iconUri,
                                     contentDescription = null,
                                     modifier = Modifier.fillMaxSize(),
                                     contentScale = ContentScale.Crop
                                 )
-                            }
-                            workoutPlan.iconId?.let {
+                            } else if (workoutPlan.iconId != null) {
                                 Image(
-                                    painter = painterResource(WorkoutPlanIconMapper.getName(it)),
+                                    painter = painterResource(
+                                        WorkoutPlanIconMapper.getName(
+                                            workoutPlan.iconId
+                                        )
+                                    ),
                                     contentDescription = null,
                                     modifier = Modifier.fillMaxSize(),
                                     contentScale = ContentScale.Crop
                                 )
-                            }
-
-                            if (workoutPlan.iconId == null || workoutPlan.iconUri == null) {
+                            } else {
                                 Image(
                                     painter = painterResource(R.drawable.icon_banner_workout_plan),
                                     contentDescription = null,
@@ -212,7 +211,13 @@ fun YourWorkoutPlans(
                                 verticalArrangement = Arrangement.spacedBy(-2.dp)
                             ) {
                                 Text(
-                                    text = workoutPlan.workoutPlanName ?: "Unnamed Workout Plan",
+                                    text = name ?: nameId?.let {
+                                        stringResource(
+                                            WorkoutPlanNameMapper.getName(
+                                                it
+                                            )
+                                        )
+                                    } ?: "Unnamed Workout Plan",
                                     fontSize = 20.sp,
                                     fontFamily = rubikFontFamily,
                                     fontWeight = FontWeight.Medium,

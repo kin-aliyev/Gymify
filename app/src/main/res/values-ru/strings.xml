@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gymify</string>
+    <string name="app_name_title">Gymify!</string>
+
+    <string name="welcome_start_button">Начать</string>
+    <string name="welcome_title">Добро пожаловать в</string>
+
+    <string name="gender_question">Ваш пол?</string>
+    <string name="gender_male">Мужской</string>
+    <string name="gender_female">Женский</string>
+    <string name="gender_other">Другое</string>
+
+    <string name="title_your_workout_plans">Ваши планы тренировок</string>
+    <string name="title_make_workout_plan">Создать план тренировки</string>
+
+    <string name="button_continue">Продолжить</string>
+    <string name="button_finish">Завершить</string>
+
+    <string name="unit_ft">фут</string>
+    <string name="unit_cm">см</string>
+    <string name="unit_lbs">фунт</string>
+    <string name="unit_kg">кг</string>
+
+    <string name="your_workout_plans">Ваши планы тренировок</string>
+    <string name="workout_program">Программа тренировок</string>
+
+    <string name="your_expertise_level">Ваш уровень подготовки</string>
+    <string name="level_beginner">Новичок</string>
+    <string name="level_intermediate">Средний уровень</string>
+    <string name="level_advanced">Продвинутый</string>
+    <string name="level_undeclared">Не указан</string>
+
+    <string name="you_can_change_in_the_settings">Вы можете изменить это в настройках в любое время</string>
+    <string name="enter_your_height">Введите свой рост</string>
+    <string name="finish">Завершить</string>
+
+    <string name="tab_plan_name">Название плана</string>
+    <string name="tab_muscle_group">Группа мышц</string>
+    <string name="tab_number_of_sets">Количество подходов</string>
+    <string name="tab_number_of_reps">Количество повторений</string>
+    <string name="tab_working_weight">Рабочий вес</string>
+
+    <string name="muscle_chest">Грудь</string>
+    <string name="muscle_back">Спина</string>
+    <string name="muscle_biceps">Бицепс</string>
+    <string name="muscle_triceps">Трицепс</string>
+    <string name="muscle_shoulders">Плечи</string>
+    <string name="muscle_legs">Ноги</string>
+    <string name="muscle_abdominals">Пресс</string>
+    <string name="no_muscle_group_selected">Выберите группу мышц</string>
+
+    <string name="user_preferences">Настройки пользователя</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_system">Системная</string>
+    <string name="group">%1$s группа</string>
+    <string name="unknown_exercise">Неизвестное упражнение</string>
+    <string name="last_used_date">Последнее использование: %1$s</string>
+
+    <!-- Спина -->
+    <string name="exercise_back_barbell_row_overhand">Тяга штанги в наклоне (обратный хват)</string>
+    <string name="exercise_back_barbell_sumo_deadlift">Сумо-тяга со штангой</string>
+    <string name="exercise_back_seated_cable_row">Тяга блока сидя</string>
+    <string name="exercise_back_t_bar_row">Тяга Т-грифа</string>
+    <string name="exercise_back_lat_pulldown_wide_grip">Тяга верхнего блока широким хватом</string>
+    <string name="exercise_back_lat_pulldown_close_grip_underhand">Тяга верхнего блока узким хватом (обратным)</string>
+    <string name="exercise_back_dumbbell_row">Тяга гантели в наклоне</string>
+    <string name="exercise_back_barbell_row_underhand">Тяга штанги в наклоне (обратный хват)</string>
+    <string name="exercise_back_cable_pullover">Пуловер с канатами</string>
+    <string name="exercise_back_pulldown_underhand">Тяга верхнего блока обратным хватом</string>
+    <string name="exercise_back_two_arm_dumbbell_row">Тяга двух гантелей в наклоне</string>
+    <string name="exercise_back_pullup">Подтягивания</string>
+    <string name="exercise_back_pullup_underhand">Подтягивания обратным хватом</string>
+    <string name="exercise_back_barbell_shrug">Шраги со штангой</string>
+    <string name="exercise_back_barbell_deadlift">Становая тяга со штангой</string>
+    <string name="exercise_back_trap_bar_deadlift">Становая с трап-грифом</string>
+    <string name="exercise_back_lat_pulldown_behind_neck">Тяга за голову</string>
+    <string name="exercise_back_barbell_pullover">Пуловер со штангой</string>
+    <string name="exercise_back_dumbbell_deadlift">Становая тяга с гантелями</string>
+    <string name="exercise_back_dumbbell_pullover">Пуловер с гантелью</string>
+    <string name="exercise_back_dumbbell_shrugs">Шраги с гантелями</string>
+    <string name="exercise_back_extension">Гиперэкстензия</string>
+
+    <!-- Бицепс -->
+    <string name="exercise_biceps_barbell_curl">Сгибание рук со штангой</string>
+    <string name="exercise_biceps_ez_barbell_curl">Сгибание рук с EZ-штангой</string>
+    <string name="exercise_biceps_preacher_barbell_curl">Сгибание на скамье Скотта</string>
+    <string name="exercise_biceps_rope_cable_curl">Сгибание рук с канатом на блоке</string>
+    <string name="exercise_biceps_dumbbell_alternate_curl">Сгибание рук с гантелями поочерёдно</string>
+    <string name="exercise_biceps_dumbbell_concentration_curl">Концентрированное сгибание</string>
+    <string name="exercise_biceps_incline_dumbbell_curl">Сгибание на наклонной скамье</string>
+    <string name="exercise_biceps_single_arm_low_cable_curl">Сгибание одной рукой у нижнего блока</string>
+    <string name="exercise_biceps_standing_two_arm_high_cable_curl">Сгибание на верхнем блоке двумя руками</string>
+    <string name="exercise_biceps_straight_bar_low_cable_curl">Сгибание с прямым грифом у нижнего блока</string>
+    <string name="exercise_biceps_dumbbell_crossbody_hammer_curl">Поперечный молот с гантелями</string>
+    <string name="exercise_biceps_barbell_reverse_curl">Обратные сгибания со штангой</string>
+
+    <!-- Трицепс -->
+    <string name="exercise_triceps_parallel_dip_bar">Отжимания на брусьях</string>
+    <string name="exercise_triceps_seated_barbell_french_press">Французский жим сидя со штангой</string>
+    <string name="exercise_triceps_underhand_bar_cable_extension">Разгибание на блоке (обратный хват)</string>
+    <string name="exercise_triceps_single_arm_cable_extension_overhand">Разгибание одной рукой (прямой хват)</string>
+    <string name="exercise_triceps_single_arm_cable_extension_underhand">Разгибание одной рукой (обратный хват)</string>
+    <string name="exercise_triceps_bench_dip">Отжимания от скамьи</string>
+    <string name="exercise_triceps_seated_dumbbell_overhead_extension">Жим гантели из-за головы сидя</string>
+    <string name="exercise_triceps_dumbbell_kickback">Разгибание руки назад с гантелью</string>
+    <string name="exercise_triceps_dumbbell_french_press">Французский жим с гантелями</string>
+    <string name="exercise_triceps_cable_rope_pushdown">Разгибание рук с канатом</string>
+    <string name="exercise_triceps_barbell_french_press">Французский жим со штангой</string>
+    <string name="exercise_triceps_close_grip_bench_press">Жим узким хватом</string>
+    <string name="exercise_triceps_bar_pushdown_overhand">Разгибание на блоке (прямой хват)</string>
+
+    <!-- Грудь -->
+    <string name="exercise_chest_push_up">Отжимания</string>
+    <string name="exercise_chest_incline_dumbbell_fly">Разводка в наклоне (гант)</string>
+    <string name="exercise_chest_barbell_declined_bench_press">Жим вниз штанги (отриц)</string>
+    <string name="exercise_chest_dumbbell_bench_press">Жим лёжа гантелей</string>
+    <string name="exercise_chest_barbell_bench_press">Жим лёжа штанги</string>
+    <string name="exercise_chest_press_machine">Жим в тренажёре</string>
+    <string name="exercise_chest_cable_crossover">Кроссовер</string>
+    <string name="exercise_chest_flat_dumbbell_fly">Разводка лёжа (гант.)</string>
+    <string name="exercise_chest_incline_barbell_bench_press">Жим штанги в наклоне </string>
+    <string name="exercise_chest_peck_deck_fly">Тренажер Бабочка</string>
+    <string name="exercise_chest_dumbbell_declined_bench_press">Жим гантелей (отриц.)</string>
+
+    <!-- Плечи -->
+    <string name="exercise_shoulders_smith_machine_press">Жим в Смите</string>
+    <string name="exercise_shoulders_barbell_push_press">Швунг штангой</string>
+    <string name="exercise_shoulders_dumbbell_lateral_raise">Разводка в стороны</string>
+    <string name="exercise_shoulders_dumbbell_front_raise">Подъём вперёд (гант.)</string>
+    <string name="exercise_shoulders_seated_dumbbell_press">Жим сидя (гантели)</string>
+    <string name="exercise_shoulders_barbell_upright_row">Тяга вверх (штанга)</string>
+    <string name="exercise_shoulders_standing_bent_over_lateral_raise">Разводка в наклоне</string>
+    <string name="exercise_shoulders_single_arm_cable_front_raise">Подъём вперёд (блок)</string>
+    <string name="exercise_shoulders_high_cable_rear_delt_fly">Разводка назад (блок)</string>
+    <string name="exercise_shoulders_single_arm_cable_lateral_raise">Разводка (1 рука, блок)</string>
+    <string name="exercise_shoulders_dumbbell_push_press">Швунг с гантелями</string>
+    <string name="exercise_shoulders_barbell_front_raise">Фронт. подъём (штанга)</string>
+    <string name="exercise_shoulders_seated_barbell_press">Жим сидя (штанга)</string>
+    <string name="exercise_shoulders_two_handed_dumbbell_front_raise">Фронт. подъём (2 гант.)</string>
+
+    <!-- Пресс -->
+    <string name="exercise_abs_crunch_machine">Скручивания в тренажёре</string>
+    <string name="exercise_abs_crunch">Скручивания</string>
+    <string name="exercise_abs_oblique_crunch">Косые скручивания</string>
+    <string name="exercise_abs_reverse_crunch">Обратные скручивания</string>
+    <string name="exercise_abs_hanging_leg_raise">Подъём ног в висе</string>
+    <string name="exercise_abs_rope_pulldown">Скруч. с канатом (блок)</string>
+    <string name="exercise_abs_plank_get_up">Планка с подъёмом</string>
+    <string name="exercise_abs_plank">Планка</string>
+    <string name="exercise_abs_wheel_rollout">Ролик для пресса</string>
+    <string name="exercise_abs_decline_leg_raise">Подъём ног на наклон.</string>
+
+    <!-- Ноги -->
+    <string name="exercise_legs_extension">Разгибания ног</string>
+    <string name="exercise_legs_barbell_squat">Присед со штангой</string>
+    <string name="exercise_legs_barbell_romanian_deadlift">Румынская тяга</string>
+    <string name="exercise_legs_glute_ham_raise">Сгиб. ног лёжа</string>
+    <string name="exercise_legs_standing_resistance_band_kickback">Отведение ног с резинкой</string>
+    <string name="exercise_legs_lunge">Выпады</string>
+    <string name="exercise_legs_barbell_good_morning">Гуд Морнинг</string>
+    <string name="exercise_legs_dumbbell_goblet_squat">Присед с гантелью</string>
+    <string name="exercise_legs_dumbbell_step_up">Шаги на тумбу</string>
+    <string name="exercise_legs_donkey_kicks">Удары пяткой вверх</string>
+    <string name="exercise_legs_hack_squat">Хакк-присед</string>
+    <string name="exercise_legs_lying_leg_curl">Сгибание лёжа</string>
+    <string name="exercise_legs_seated_leg_curl">Сгибание сидя</string>
+    <string name="exercise_legs_kettlebell_swing">Мах гири</string>
+    <string name="exercise_legs_side_lying_leg_raise">Подъём ноги лёжа</string>
+    <string name="exercise_legs_banded_glute_bridge">Ягодичный мост с лентой</string>
+    <string name="exercise_legs_bodyweight_glute_bridge">Ягодичный мост</string>
+    <string name="exercise_legs_single_leg_extension">Разгиб. одной ногой</string>
+    <string name="exercise_legs_lateral_band_walk">Шаги с лентой</string>
+    <string name="exercise_legs_barbell_front_squat">Фронтальный присед</string>
+    <string name="exercise_legs_dumbbell_romanian_deadlift">Румынская тяга (гант.)</string>
+    <string name="exercise_legs_bodyweight_squat">Присед без веса</string>
+    <string name="exercise_legs_medicine_ball_squat">Присед с мячом</string>
+    <string name="exercise_legs_barbell_bulgarian_split_squat">Болг. выпады (штанга)</string>
+    <string name="exercise_legs_kettlebell_sumo_deadlift">Сумо с гирей</string>
+    <string name="exercise_legs_single_leg_bodyweight_deadlift">Тяга одной ногой (вес тела)</string>
+    <string name="exercise_legs_barbell_hip_thrust">Тяга бёдер со штангой</string>
+    <string name="exercise_legs_mini_band_squat">Присед с мини-лентой</string>
+    <string name="exercise_legs_cable_hip_abduction">Отведение ноги (блок)</string>
+    <string name="exercise_legs_jump_squat">Прыжок-присед</string>
+    <string name="exercise_legs_wall_sit">Упор у стены</string>
+    <string name="exercise_legs_banded_clamshell">Ракушка с лентой</string>
+    <string name="exercise_legs_bodyweight_bulgarian_split_squat">Болг. выпады (без веса)</string>
+    <string name="exercise_legs_leg_press">Жим ногами</string>
+    <string name="exercise_legs_medicine_ball_deadlift">Становая с мячом</string>
+    <string name="exercise_legs_seated_calf_raise">Подъём носков сидя</string>
+    <string name="exercise_legs_standing_calf_raise">Подъём носков стоя</string>
+</resources>

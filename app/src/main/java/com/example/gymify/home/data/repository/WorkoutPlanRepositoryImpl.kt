@@ -31,16 +31,20 @@ class WorkoutPlanRepositoryImpl(
         return workoutPlanDao.getWorkoutPlanById(planId)?.toDomain()
     }
 
-    override suspend fun getAllWorkoutPlans(): List<WorkoutPlan> {
-        return workoutPlanDao.getAllWorkoutPlans().map { it.toDomain() }
+    override fun getAllWorkoutPlans(): Flow<List<WorkoutPlan>> {
+        return workoutPlanDao.getAllWorkoutPlans().map { workoutPlanEntityList ->
+            workoutPlanEntityList.map { it.toDomain() }
+        }
     }
 
     override suspend fun getPredefinedWorkoutPlans(): List<WorkoutPlan> {
         return workoutPlanDao.getPredefinedWorkoutPlans().map { it.toDomain() }
     }
 
-    override suspend fun getUserDefinedWorkoutPlans(): List<WorkoutPlan> {
-        return workoutPlanDao.getUserDefinedWorkoutPlans().map { it.toDomain() }
+    override fun getUserDefinedWorkoutPlans(): Flow<List<WorkoutPlan>> {
+        return workoutPlanDao.getUserDefinedWorkoutPlans().map { entityList ->
+            entityList.map { it.toDomain() }
+        }
     }
 
     override suspend fun updateLastUsedDate(workoutPlanId: Int, timestamp: Long) {

@@ -313,7 +313,7 @@ fun OptionTabSets(
                         fontFamily = rubikFontFamily
                     ),
                     singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    keyboardOptions = KeyboardOptions(keyboardType = if (!isForPlanName) KeyboardType.Number else KeyboardType.Text),
                     readOnly = isReadOnly,
                     modifier = Modifier
                         .fillMaxWidth()

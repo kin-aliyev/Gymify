@@ -12,9 +12,11 @@ import com.example.gymify.home.domain.model.WorkoutExerciseWithExerciseInfo
 import com.example.gymify.home.domain.usecases.ExerciseUseCases
 import com.example.gymify.home.domain.usecases.WorkoutExerciseUseCases
 import com.example.gymify.home.domain.usecases.WorkoutPlanUseCases
-import com.example.gymify.sign_up.domain.usecases.SignUpUseCases
+import com.example.gymify.settings.util.ImageSaver
+import com.example.gymify.signup.domain.usecases.SignUpUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -29,13 +31,13 @@ class WorkoutPlanDetailViewModel @Inject constructor(
     private val workoutExerciseUseCases: WorkoutExerciseUseCases,
     private val exerciseUseCases: ExerciseUseCases,
     private val signUpUseCases: SignUpUseCases,
+    private val imageSaver: ImageSaver,
     private val currentWorkoutRepository: CurrentWorkoutRepository,
     private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     private val _state = MutableStateFlow(WorkoutPlanDetailState())
     val state = _state.asStateFlow()
 
-    // TODO ОБРАБОТКУ ONACTION И ДОБАВЛЕНИЕ В NAVIGATION GRAPH
     init {
         val workoutId = savedStateHandle.get<Int>("workoutPlanId")
         val workoutPlanNameId = savedStateHandle.get<String>("workoutPlanNameId")
@@ -57,6 +59,7 @@ class WorkoutPlanDetailViewModel @Inject constructor(
 
     private fun loadExistingWorkout(workoutId: Int) {
         viewModelScope.launch {
+            _state.update { it.copy(isLoading = true) }
             val workoutPlan = workoutPlanUseCases.getWorkoutPlanByIdUseCase(workoutId)
 
             workoutPlan?.let { workoutPlan ->
@@ -98,14 +101,20 @@ class WorkoutPlanDetailViewModel @Inject constructor(
                     workoutExerciseUseCases.getFullExercisesForWorkoutPlanUseCase(id)
                 workoutExercises.collect { workoutExercisesList ->
                     val totalSets = workoutExercisesList.sumOf { it.workoutExercise.sets ?: 0 }
-                    val estimatedMinutes = (totalSets * 3.5).roundToInt()
+                    val estimatedMinutes = (totalSets * 4)
+
+                    delay(300)
 
                     _state.update {
                         it.copy(
                             selectedExercises = workoutExercisesList,
-                            workoutEstimatedTimeMinutes = estimatedMinutes
+                            workoutEstimatedTimeMinutes = estimatedMinutes,
+                            isLoading = false,
                         )
                     }
+
+                    delay(50)
+                    _state.update { it.copy(isContentReady = true) }
                 }
             }
         }
@@ -113,6 +122,8 @@ class WorkoutPlanDetailViewModel @Inject constructor(
 
     private fun loadFullPredefinedWorkout(workoutPlanNameId: String) {
         viewModelScope.launch {
+            _state.update { it.copy(isLoading = true) }
+
             val workoutExercises =
                 PredefinedWorkoutExercises.getExercisesForWorkoutPlan(workoutPlanNameId)
             val displayName =
@@ -130,10 +141,13 @@ class WorkoutPlanDetailViewModel @Inject constructor(
             } ?: emptyList()
 
             val totalSets = fullExercises.sumOf { it.workoutExercise.sets ?: 0 }
-            val estimatedMinutes = (totalSets * 3.5f).roundToInt()
+            val estimatedMinutes = (totalSets * 4)
+
+            delay(300L)
 
             _state.update {
                 it.copy(
+                    isLoading = false,
                     isWorkoutInDatabase = false,
                     workoutPlanNameId = workoutPlanNameId,
                     workoutPlanIconId = workoutPlanIconId,
@@ -145,6 +159,10 @@ class WorkoutPlanDetailViewModel @Inject constructor(
                     workoutEstimatedTimeMinutes = estimatedMinutes
                 )
             }
+
+            delay(50)
+            _state.update { it.copy(isContentReady = true) }
+
         }
     }
 
@@ -152,8 +170,13 @@ class WorkoutPlanDetailViewModel @Inject constructor(
         when (action) {
             is WorkoutPlanDetailAction.OnDeleteWorkoutClick -> {
                 viewModelScope.launch {
-                    workoutPlanUseCases.deleteWorkoutPlanByIdUseCase(action.workoutId)
-                    _state.update { WorkoutPlanDetailState() }
+                    if (state.value.isWorkoutInDatabase) {
+                        val currentIconPath = state.value.imagePath
+                        if (!currentIconPath.isNullOrEmpty()) { imageSaver.deleteWorkoutPlanIcon(currentIconPath) }
+                        workoutPlanUseCases.deleteWorkoutPlanByIdUseCase(action.workoutId)
+                    }
+
+                    _state.update { WorkoutPlanDetailState(isLoading = false, isContentReady = false) }
                 }
             }
 
@@ -176,7 +199,7 @@ class WorkoutPlanDetailViewModel @Inject constructor(
             }
 
             is WorkoutPlanDetailAction.OnNavigateBackClick -> Unit
-
+            is WorkoutPlanDetailAction.OnEditPredefinedWorkoutClick -> Unit
         }
     }
 }

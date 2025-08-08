@@ -1,9 +1,11 @@
 package com.example.gymify.core.di
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.gymify.core.data.manager.AppCoreManagerImpl
 import com.example.gymify.core.data.manager.LocalUserInfoManagerImpl
-import com.example.gymify.core.data.manager.LocaleManager
+import com.example.gymify.core.data.manager.AppLocaleManager
 import com.example.gymify.core.domain.manager.AppCoreManager
 import com.example.gymify.core.domain.usecases.AppCoreUseCases
 import com.example.gymify.core.domain.usecases.language.GetLanguageUseCase
@@ -61,7 +63,7 @@ import com.example.gymify.home.domain.usecases.workout_session.GetSessionsByPlan
 import com.example.gymify.home.domain.usecases.workout_session.GetSessionsByTimeRangeUseCase
 import com.example.gymify.home.domain.usecases.workout_session.GetWorkoutSessionByIdUseCase
 import com.example.gymify.home.domain.usecases.workout_session.UpsertWorkoutSessionUseCase
-import com.example.gymify.sign_up.domain.manager.LocalUserInfoManager
+import com.example.gymify.core.domain.manager.LocalUserInfoManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -87,12 +89,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocaleManager(
-        getLanguageUseCase: GetLanguageUseCase,
-        setLanguageUseCase: SetLanguageUseCase,
-    ): LocaleManager {
-        return LocaleManager(getLanguageUseCase, setLanguageUseCase)
-    }
+    fun provideLocaleManager(): AppLocaleManager = AppLocaleManager()
 
     @Provides
     @Singleton
@@ -106,6 +103,7 @@ object AppModule {
         return SetLanguageUseCase(appCoreManager)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @Provides
     @Singleton
     fun provideTimeRangeUtils(): TimeRangeUtils = TimeRangeUtils()
@@ -117,8 +115,10 @@ object AppModule {
     ): AppCoreUseCases = AppCoreUseCases(
         saveRegistrationUseCase = SaveRegistrationUseCase(appCoreManager),
         readRegistrationStatusUseCase = ReadRegistrationStatusUseCase(appCoreManager),
+
         getThemeModeUseCase = GetThemeModeUseCase(appCoreManager),
         setThemeModeUseCase = SetThemeModeUseCase(appCoreManager),
+
         getLanguageUseCase = GetLanguageUseCase(appCoreManager),
         setLanguageUseCase = SetLanguageUseCase(appCoreManager)
     )
@@ -130,11 +130,14 @@ object AppModule {
     ): ExerciseUseCases = ExerciseUseCases(
         upsertExerciseUseCase = UpsertExerciseUseCase(repository),
         deleteExerciseUseCase = DeleteExerciseUseCase(repository),
+        deleteExerciseByIdUseCase = DeleteExerciseByIdUseCase(repository),
+
         getExerciseByIdUseCase = GetExerciseByIdUseCase(repository),
         getExercisesByMuscleGroupUseCase = GetExercisesByMuscleGroupUseCase(repository),
+
         getAllExercisesUseCase = GetAllExercisesUseCase(repository),
-        getExerciseWithStatsByIdUseCase = GetExerciseWithStatsByIdUseCase(repository),
-        deleteExerciseByIdUseCase = DeleteExerciseByIdUseCase(repository)
+
+        getExerciseWithStatsByIdUseCase = GetExerciseWithStatsByIdUseCase(repository)
     )
 
     @Provides
@@ -144,6 +147,7 @@ object AppModule {
     ): ExerciseStatsUseCases = ExerciseStatsUseCases(
         upsertExerciseStatsUseCase = UpsertExerciseStatsUseCase(repository),
         getExerciseStatsUseCase = GetExerciseStatsUseCase(repository),
+
         updateMaxWeightUseCase = UpdateMaxWeightUseCase(repository),
         updateLastWeightUseCase = UpdateLastWeightUseCase(repository)
     )
@@ -153,13 +157,14 @@ object AppModule {
     fun provideWorkoutExerciseUseCases(
         repository: WorkoutExerciseRepository
     ): WorkoutExerciseUseCases = WorkoutExerciseUseCases(
+        getWorkoutExerciseByIdUseCase = GetWorkoutExerciseByIdUseCase(repository),
+        getWorkoutExercisesByPlanIdUseCase = GetWorkoutExercisesByPlanIdUseCase(repository),
         upsertWorkoutExerciseUseCase = UpsertWorkoutExerciseUseCase(repository),
         deleteWorkoutExerciseUseCase = DeleteWorkoutExerciseUseCase(repository),
-        getWorkoutExercisesByPlanIdUseCase = GetWorkoutExercisesByPlanIdUseCase(repository),
-        getWorkoutExerciseWithExerciseUseCase = GetWorkoutExerciseWithExerciseUseCase(repository),
         deleteWorkoutExerciseByIdUseCase = DeleteWorkoutExerciseByIdUseCase(repository),
-        getFullExercisesForWorkoutPlanUseCase = GetFullExercisesForWorkoutPlanUseCase(repository),
-        getWorkoutExerciseByIdUseCase = GetWorkoutExerciseByIdUseCase(repository)
+
+        getWorkoutExerciseWithExerciseUseCase = GetWorkoutExerciseWithExerciseUseCase(repository),
+        getFullExercisesForWorkoutPlanUseCase = GetFullExercisesForWorkoutPlanUseCase(repository)
     )
 
     @Provides

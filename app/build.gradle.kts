@@ -54,6 +54,10 @@ android {
         }
     }
 
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     kapt {
         correctErrorTypes = true
     }

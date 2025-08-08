@@ -6,32 +6,31 @@ import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gymify.home.util.ExerciseNameMapper
-import com.example.gymify.home.util.MuscleGroupNameMapper
 import com.example.gymify.home.data.local.predefined.PredefinedWorkoutExercises
-import com.example.gymify.home.util.WorkoutPlanIconMapper
-import com.example.gymify.home.util.getWorkoutPlanDisplayName
 import com.example.gymify.home.data.repository.util.CurrentWorkoutRepository
 import com.example.gymify.home.domain.model.WorkoutExercise
 import com.example.gymify.home.domain.model.WorkoutPlan
 import com.example.gymify.home.domain.usecases.ExerciseUseCases
 import com.example.gymify.home.domain.usecases.WorkoutExerciseUseCases
 import com.example.gymify.home.domain.usecases.WorkoutPlanUseCases
-import com.example.gymify.sign_up.domain.usecases.SignUpUseCases
+import com.example.gymify.home.util.ExerciseNameMapper
+import com.example.gymify.home.util.MuscleGroupNameMapper
+import com.example.gymify.home.util.WorkoutPlanIconMapper
+import com.example.gymify.home.util.getWorkoutPlanDisplayName
+import com.example.gymify.settings.util.ImageSaver
+import com.example.gymify.signup.domain.usecases.SignUpUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
 class MakeWorkoutPlanViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
+    private val imageSaver: ImageSaver,
     private val currentWorkoutRepository: CurrentWorkoutRepository,
     private val workoutPlanUseCases: WorkoutPlanUseCases,
     private val workoutExerciseUseCases: WorkoutExerciseUseCases,
@@ -77,7 +76,7 @@ class MakeWorkoutPlanViewModel @Inject constructor(
                     id = 0,
                     workoutPlanNameId = workoutPlanNameId,
                     lastUsedDate = System.currentTimeMillis(),
-                    iconId = workoutPlanNameId
+                    iconId = workoutPlanNameId,
                 )
 
                 val predefinedPlanId = workoutPlanUseCases.upsertWorkoutPlanUseCase(predefinedPlan)
@@ -98,9 +97,10 @@ class MakeWorkoutPlanViewModel @Inject constructor(
                         isPredefinedPlan = true,
                         workoutPlanName = null,
                         workoutPlanIconUri = null,
+                        workoutPlanIconId = workoutPlanNameId,
                         workoutPlanNameId = workoutPlanNameId,
                         displayName = displayName,
-                        displayIconId = displayIconId
+                        displayIconId = displayIconId,
                     )
                 }
 
@@ -137,7 +137,7 @@ class MakeWorkoutPlanViewModel @Inject constructor(
             val workoutPlan = workoutPlanUseCases.getWorkoutPlanByIdUseCase(workoutId)
 
             workoutPlan?.let { plan ->
-                val isPredefined = !plan.workoutPlanNameId.isNullOrEmpty()
+                val isPredefined = !workoutPlanUseCases.isWorkoutPlanInDatabaseUseCase(plan.id)
 
                 val displayName = getWorkoutPlanDisplayName(
                     context = context,
@@ -152,6 +152,7 @@ class MakeWorkoutPlanViewModel @Inject constructor(
                         workoutPlanNameId = plan.workoutPlanNameId,
                         workoutPlanName = plan.workoutPlanName,
                         workoutPlanIconUri = plan.iconUri,
+                        workoutPlanIconId = plan.iconId,
                         displayName = displayName
                     )
                 }
@@ -323,7 +324,7 @@ class MakeWorkoutPlanViewModel @Inject constructor(
     private fun handleImageSelection(uri: Uri) {
         viewModelScope.launch {
             try {
-                val savedPath = saveImageToInternalStorage(uri)
+                val savedPath = imageSaver.saveWorkoutPlanIcon(uri)
                 _state.update { it.copy(workoutPlanIconUri = savedPath) }
 
                 // Сохраняем в базу данных сразу
@@ -341,30 +342,6 @@ class MakeWorkoutPlanViewModel @Inject constructor(
         }
     }
 
-    private suspend fun saveImageToInternalStorage(uri: Uri): String? {
-        return withContext(Dispatchers.IO) {
-            try {
-                val inputStream = context.contentResolver.openInputStream(uri)
-                val fileName = "workout_plan_${System.currentTimeMillis()}.jpg"
-                val file = File(context.filesDir, "workout_images").apply {
-                    mkdirs()
-                }
-                val imageFile = File(file, fileName)
-
-                inputStream?.use { input ->
-                    imageFile.outputStream().use { output ->
-                        input.copyTo(output)
-                    }
-                }
-
-                imageFile.absolutePath
-            } catch (e: Exception) {
-                Log.e("MakeWorkoutPlanViewModel", "Exception : $e")
-                null
-            }
-        }
-    }
-
     private fun saveWorkoutPlan() {
         viewModelScope.launch {
             val currentState = state.value
@@ -378,6 +355,9 @@ class MakeWorkoutPlanViewModel @Inject constructor(
                     workoutPlanName = if (!currentState.isPredefinedPlan) currentState.workoutPlanName else null,
                     lastUsedDate = System.currentTimeMillis(),
                     iconUri = currentState.workoutPlanIconUri,
+                    // TODO эти сейчас добавил снизу
+                    workoutPlanNameId = state.value.workoutPlanNameId,
+                    iconId = state.value.workoutPlanIconId
                 )
                 workoutPlanUseCases.upsertWorkoutPlanUseCase(updatedPlan)
             }

@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.gymify.R
 import com.example.gymify.core.domain.model.UserHeightUnit
 import com.example.gymify.core.domain.model.UserWeightUnit
-import com.example.gymify.sign_up.domain.model.UserGender
+import com.example.gymify.core.domain.model.UserGender
 
 // Получение локализованного названия гендера
 fun UserGender.getLocalizedName(context: Context): String {

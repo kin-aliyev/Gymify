@@ -1,9 +1,9 @@
 package com.example.gymify.home.presentation.user_workouts_screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,11 +36,11 @@ import com.example.gymify.R
 import com.example.gymify.core.presentation.components.BackTopBar
 import com.example.gymify.core.presentation.components.BottomNavigationBar
 import com.example.gymify.core.presentation.navigation.NavigationDestination
-import com.example.gymify.core.presentation.navigation.home.UserWorkoutPlans
-import com.example.gymify.home.domain.model.WorkoutPlan
+import com.example.gymify.home.navigation.UserWorkoutPlans
 import com.example.gymify.home.presentation.user_workouts_screen.components.WorkoutCardList
 import com.example.gymify.ui.theme.GymifyTheme
 import com.example.gymify.ui.theme.rubikFontFamily
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,6 +78,7 @@ fun UserWorkoutsScreen(
 
     ) { paddingValues ->
         if (state.userWorkoutPlans.isNotEmpty()) {
+            Log.d("HomeScreen", "User WorkoutsScreen User Plans: ${state.userWorkoutPlans}")
             WorkoutCardList(
                 workoutPlans = state.userWorkoutPlans,
                 onWorkoutPlanClick = { onAction(UserWorkoutsAction.OnWorkoutPlanClick(it)) },
