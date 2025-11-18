@@ -33,14 +33,12 @@ object DatabaseModule {
     @Singleton
     fun provideGymifyDatabase(
         @ApplicationContext context: Context
-//        app: Application,
     ): GymifyDatabase {
         return Room.databaseBuilder(
             context = context,
             klass = GymifyDatabase::class.java,
             name = "gymify_database"
         ).createFromAsset("database/exercises.db")
-            .fallbackToDestructiveMigration()
             .build()
     }
 

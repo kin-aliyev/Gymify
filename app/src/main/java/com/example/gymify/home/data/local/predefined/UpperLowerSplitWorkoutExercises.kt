@@ -46,7 +46,7 @@ internal val upperExercisesFirst = listOf(
     WorkoutExercise(
         id = 0,
         workoutPlanId = 0, // Будет обновлен при создании плана
-        exerciseId = 46, // ID упражнения "BICEPS alternate dumbbell curl"
+        exerciseId = 27, // ID упражнения "BICEPS alternate dumbbell curl"
         reps = 10,
         sets = 2,
         weight = 17.5f

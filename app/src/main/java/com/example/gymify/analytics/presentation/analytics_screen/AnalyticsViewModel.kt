@@ -109,7 +109,7 @@ class AnalyticsViewModel @Inject constructor(
             _state.update {
                 it.copy(
                     data = weekBarData,
-                    totalTimeMinutes = totalSeconds.toInt(),
+                    totalTimeMinutes = (totalSeconds / 60).toInt(),
                 )
             }
         }
@@ -127,7 +127,7 @@ class AnalyticsViewModel @Inject constructor(
             _state.update {
                 it.copy(
                     data = monthBarData,
-                    totalTimeMinutes = totalSeconds.toInt()
+                    totalTimeMinutes = (totalSeconds / 60).toInt()
                 )
             }
         }
@@ -145,7 +145,7 @@ class AnalyticsViewModel @Inject constructor(
             _state.update {
                 it.copy(
                     data = yearBarData,
-                    totalTimeMinutes = totalSeconds.toInt()
+                    totalTimeMinutes = (totalSeconds / 60).toInt()
                 )
             }
         }

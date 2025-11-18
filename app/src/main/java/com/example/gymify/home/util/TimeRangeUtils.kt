@@ -73,7 +73,7 @@ class TimeRangeUtils {
                 .toEpochMilli()
 
             BarData(
-                minutes = totalSeconds.toInt(),
+                minutes = (totalSeconds / 60).toInt(),
                 label = label,
                 timestamp = dayTimeStamp
             )
@@ -180,7 +180,7 @@ class TimeRangeUtils {
             val totalSeconds = weekSessions.sumOf { it.durationSeconds }
 
             BarData(
-                minutes = totalSeconds.toInt(),
+                minutes = (totalSeconds / 60).toInt(),
                 label = romanNumerals[index],
                 timestamp = weekRange.startTimestamp
             )
@@ -248,7 +248,7 @@ class TimeRangeUtils {
                 .toEpochMilli()
 
             BarData(
-                minutes = totalSeconds.toInt(),
+                minutes = (totalSeconds / 60).toInt(),
                 label = label,
                 timestamp = monthTimestamp
             )
