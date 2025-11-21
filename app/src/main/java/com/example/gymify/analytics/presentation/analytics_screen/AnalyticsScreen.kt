@@ -97,26 +97,26 @@ fun AnalyticsScreen(
 @Preview
 @Composable
 private fun AnalyticsScreenPreview() {
-    GymifyTheme {
+    GymifyTheme(darkTheme = true) {
         AnalyticsScreen(
             onNavigate = { },
             selectedDestination = Analytics,
             state = AnalyticsState(
                 data = listOf(
-                    BarData(2, "Mon", null),
-                    BarData(1, "Tue", null),
-                    BarData(0, "Wed", null),
-                    BarData(1, "Thu", null),
-                    BarData(2, "Fri", null),
-                    BarData(0, "Sat", null),
-                    BarData(1, "Sun", null),
+                    BarData(90, "Mon", null),
+                    BarData(30, "Tue", null),
+                    BarData(80, "Wed", null),
+                    BarData(20, "Thu", null),
+                    BarData(120, "Fri", null),
+                    BarData(40, "Sat", null),
+                    BarData(70, "Sun", null),
                 ),
                 selectedScale = TimeScale.DAY,
-                selectedIndex = 0,
-                selectedBarDurationMinutes = 2,
-                selectedDateTitle = "31 Jul",
-                totalTimeMinutes = 32,
-                bmiValue = 25f,
+                selectedIndex = 4,
+                selectedBarDurationMinutes = 120,
+                selectedDateTitle = "21 November",
+                totalTimeMinutes = 450,
+                bmiValue = 24.5f,
             ),
             onAction = { }
         )

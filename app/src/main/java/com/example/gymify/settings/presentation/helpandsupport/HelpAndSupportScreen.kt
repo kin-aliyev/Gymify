@@ -162,7 +162,7 @@ fun HelpAndSupportScreen(
                 Spacer(Modifier.height(12.dp))
                 HelpAndSupportInfoTab(
                     tabIcon = R.drawable.icon_telegram_logo,
-                    tabValue = "didarov7",
+                    tabValue = "kin_aliyev",
                     isForSocialMedia = true,
                     onTabClick = { openTelegramProfile(context) }
                 )

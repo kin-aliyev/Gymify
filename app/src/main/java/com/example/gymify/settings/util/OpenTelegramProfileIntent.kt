@@ -5,7 +5,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.core.net.toUri
 
-fun openTelegramProfile(context: Context, username: String = "didarov7") {
+fun openTelegramProfile(context: Context, username: String = "kin_aliyev") {
     val telegramAppAndWebUri = "https://t.me/$username"
     try {
 
