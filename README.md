@@ -35,9 +35,20 @@
 
 ## Screens / App Walkthrough
 
-## Onboarding
+### Onboarding
 | Welcome | Gender | Height | Weight | Experience Level |
 |:-------:|:------:|:------:|:------:|:----------------:|
 | <img src="assets/screenshots/welcome_screen.png" height="400"/> | <img src="assets/videos/gender_screen.gif" height="400"/> | <img src="assets/screenshots/height_screen.png" height="400"/> | <img src="assets/screenshots/weight_screen.png" height="400"/> | <img src="assets/screenshots/expertise_screen.png" height="400"/> |
 
 **Description:** Users complete a personalized onboarding flow to set up their fitness profile.
+
+---
+
+### Main Screens
+| Your Training Hub | Workout Session | Your Workout Plans | Workout Details | Make Workout Plan Video |
+|:----------------:|:---------------:|:----------------:|:---------------:|:--------------------:|
+| <img src="assets/screenshots/your_training_hub.png" height="400"/> | <img src="assets/screenshots/workout_session.png" height="400"/> | <img src="assets/screenshots/your_workout_plans_screen.png" height="400"/> | <img src="assets/screenshots/workout_details_screen.png" height="400"/> | <img src="assets/videos/make_workout_plan_footage.gif" height="400"/> |
+
+**Description:** Navigate your main gym routines, create or view workouts, and start sessions with real-time tracking.
+
+---
