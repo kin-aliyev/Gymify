@@ -1,4 +1,4 @@
-# Gymify — Workout Planner & Gym Tracker 💪🏋️‍♂️
+# Gymify – Workout Planner & Gym Tracker
 
 <p align="center">
   <img src="assets/screenshots/your_training_hub.png" alt="Your Training Hub" width="28%" />
@@ -7,73 +7,255 @@
 </p>
 
 <p align="center">
-  <b>Your Training Hub</b> • <b>Workout Session</b> • <b>Analytics Dashboard</b>
+  <strong>Your personal gym companion for tracking workouts and maximizing results</strong>
 </p>
 
-**Gymify** is your personal gym companion — track your workouts, monitor progress, and design fully customized training plans with ease. Whether you want to record your sets, weights, and reps, or review your weekly, monthly, and yearly performance, Gymify keeps everything at your fingertips. Never forget your last working weight or your personal best again — Gymify remembers it all, helping you maximize your results efficiently.
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-Android-green.svg" alt="Platform">
+  <img src="https://img.shields.io/badge/Language-Kotlin-blue.svg" alt="Language">
+  <img src="https://img.shields.io/badge/Architecture-MVI-orange.svg" alt="Architecture">
+  <img src="https://img.shields.io/badge/UI-Jetpack%20Compose-brightgreen.svg" alt="UI">
+</p>
 
 ---
 
-## Project Status
+## Overview
 
-**Current State:** Alpha — Gymify is functional and already helps track workouts, but there’s room for improvements. No active roadmap planned, as this is a personal project.
+Gymify is a modern Android workout tracker that helps you design custom training plans, track every set and rep, and visualize your progress over time. Never forget your last working weight or personal best — Gymify remembers everything for you.
+
+**Key Highlights:**
+- 📊 Visual analytics with weekly, monthly, and yearly insights
+- 🎯 Real-time workout tracking with automatic history
+- 💪 Fully customizable workout plans and exercise library
+- 🎨 Modern UI built entirely with Jetpack Compose
+- 📱 Clean MVI architecture for predictable state management
 
 ---
 
 ## Features
 
-- **Your Training Hub:** Quick access to recent workouts, pre-made routines, and personalized plans.  
-- **Workout Session:** Start workouts, track sets, reps, and weights in real-time.  
-- **Analytics Dashboard:** Review your weekly, monthly, and yearly activity; monitor your BMI and progress visually.  
-- **Custom Workout Plans:** Create your own workout from scratch, choose exercises from the library, add photos, names, and fully customize your plan.  
-- **Exercise Tracking:** Gymify remembers your last set and your personal best for every exercise.  
-- **Sign-Up Flow:** Personalized onboarding with gender, height, weight, and expertise selection.  
-- **Settings:** Manage profile info, preferences, appearance, language, and support.  
-- **Data Persistence:** All progress is safely stored using modern state management with Coroutines, Flow/StateFlow, and DataStore.
+### Core Functionality
+- **Training Hub** — Quick access to recent workouts, routines, and personalized plans
+- **Live Workout Sessions** — Track sets, reps, and weights in real-time
+- **Exercise Memory** — Automatically recalls your last set and personal best for every exercise
+- **Custom Workout Builder** — Create workouts from scratch with photos, names, and full customization
+- **Analytics Dashboard** — Monitor activity trends, BMI, and progress with interactive charts
+- **Personalized Onboarding** — Setup flow with gender, height, weight, and experience level
+
+### Technical Features
+- Offline-first architecture with Room persistence
+- Reactive UI updates with Kotlin Flow and StateFlow
+- Type-safe navigation with Navigation Compose
+- Dependency injection with Hilt
+- Modern coroutine-based async operations
 
 ---
 
-## Screens / App Walkthrough
+## Screenshots
 
-### Onboarding
-| Welcome | Gender | Height | Weight | Experience Level |
-|:-------:|:------:|:------:|:------:|:----------------:|
-| <img src="assets/screenshots/welcome_screen.png" height="400"/> | <img src="assets/videos/gender_screen.gif" height="400"/> | <img src="assets/screenshots/height_screen.png" height="400"/> | <img src="assets/screenshots/weight_screen.png" height="400"/> | <img src="assets/screenshots/expertise_screen.png" height="400"/> |
+### Onboarding Flow
+<p align="center">
+  <img src="assets/screenshots/welcome_screen.png" height="400"/>
+  <img src="assets/videos/gender_screen.gif" height="400"/>
+  <img src="assets/screenshots/height_screen.png" height="400"/>
+  <img src="assets/screenshots/weight_screen.png" height="400"/>
+  <img src="assets/screenshots/expertise_screen.png" height="400"/>
+</p>
 
-**Description:** Users complete a personalized onboarding flow to set up their fitness profile.
+### Main Experience
+<p align="center">
+  <img src="assets/screenshots/your_training_hub.png" height="400"/>
+  <img src="assets/screenshots/workout_session.png" height="400"/>
+  <img src="assets/screenshots/your_workout_plans_screen.png" height="400"/>
+  <img src="assets/videos/make_workout_plan_footage.gif" height="400"/>
+</p>
 
----
+### Workout & Analytics
+<p align="center">
+  <img src="assets/videos/workout_session_footage.gif" height="400"/>
+  <img src="assets/screenshots/workout_finish_screen.png" height="400"/>
+  <img src="assets/screenshots/analytics_dashboard.png" height="400"/>
+</p>
 
-### Main Screens
-| Your Training Hub | Workout Session | Your Workout Plans | Workout Details | Make Workout Plan Video |
-|:----------------:|:---------------:|:----------------:|:---------------:|:--------------------:|
-| <img src="assets/screenshots/your_training_hub.png" height="400"/> | <img src="assets/screenshots/workout_session.png" height="400"/> | <img src="assets/screenshots/your_workout_plans_screen.png" height="400"/> | <img src="assets/screenshots/workout_details_screen.png" height="400"/> | <img src="assets/videos/make_workout_plan_footage.gif" height="400"/> |
-
-**Description:** Navigate your main gym routines, create or view workouts, and start sessions with real-time tracking.
-
----
-
-### Workout Flow
-| Do Workout Video | Finish Workout |
-|:---------------:|:-------------:|
-| <img src="assets/videos/workout_session_footage.gif" height="400"/> | <img src="assets/screenshots/workout_finish_screen.png" height="400"/> |
-
-**Description:** Track sets, reps, and weights live during workouts and see summary at the end.
-
----
-
-### Analytics
-| Analytics Dashboard |
-|:-----------------:|
-| <img src="assets/screenshots/analytics_dashboard.png" height="400"/> |
-
-**Description:** Monitor your weekly, monthly, or yearly activity. Visualize BMI and overall progress with charts.
+### Settings & Customization
+<p align="center">
+  <img src="assets/screenshots/settings_screen.png" height="400"/>
+  <img src="assets/screenshots/user_preferences_screen.png" height="400"/>
+  <img src="assets/screenshots/app_appearance_screen.png" height="400"/>
+  <img src="assets/screenshots/language_screen.png" height="400"/>
+</p>
 
 ---
 
-### Settings
-| Settings | User Preferences | App Appearance | Language | Support |
-|:--------:|:----------------:|:-------------:|:--------:|:-------:|
-| <img src="assets/screenshots/settings_screen.png" height="400"/> | <img src="assets/screenshots/user_preferences_screen.png" height="400"/> | <img src="assets/screenshots/app_appearance_screen.png" height="400"/> | <img src="assets/screenshots/language_screen.png" height="400"/> | <img src="assets/videos/support_screen_footage.gif" height="400"/> |
+## Tech Stack
 
-**Description:** Update profile, manage preferences, customize theme and language, and access support or author contacts.
+### Core
+- **Kotlin** — Primary language with coroutines for async operations
+- **Jetpack Compose** — Fully declarative UI toolkit
+- **MVI Architecture** — Unidirectional data flow with clear state management
+
+### Android Components
+- **Room** — Local database for workout history and plans
+- **DataStore** — Type-safe preferences storage
+- **Navigation Compose** — Type-safe screen navigation
+- **Hilt** — Dependency injection framework
+
+### Reactive Programming
+- **Coroutines** — Structured concurrency
+- **Flow/StateFlow** — Reactive data streams and state observation
+
+---
+
+## Architecture
+
+Gymify follows **MVI (Model-View-Intent)** pattern with clean architecture principles for maintainability and testability.
+
+### Architecture Layers
+
+```
+┌─────────────────────────────────────────┐
+│          Presentation Layer             │
+│  ┌────────────────────────────────────┐ │
+│  │  Composable Screens (UI)           │ │
+│  │  ↕                                 │ │
+│  │  ViewModel                         │ │
+│  │  • UI State (immutable)            │ │
+│  │  • UI Actions/Events               │ │
+│  │  • Intent Handlers                 │ │
+│  └────────────────────────────────────┘ │
+└─────────────────────────────────────────┘
+                    ↕
+┌─────────────────────────────────────────┐
+│            Domain Layer                 │
+│  • Use Cases (business logic)           │
+│  • Domain Models                        │
+│  • Repository Interfaces                │
+└─────────────────────────────────────────┘
+                    ↕
+┌─────────────────────────────────────────┐
+│             Data Layer                  │
+│  • Repository Implementations           │
+│  • Room DAOs                            │
+│  • Data Sources                         │
+│  • DTO/Entity Mapping                   │
+└─────────────────────────────────────────┘
+```
+
+### MVI Flow
+
+```
+User Intent → ViewModel → State Update → UI Recomposition
+     ↑                                         ↓
+     └─────────────── User Action ─────────────┘
+```
+
+### Key Principles
+- **Single Source of Truth** — ViewModels maintain app state
+- **Unidirectional Data Flow** — Predictable state transitions
+- **Immutable State** — UI State objects are read-only
+- **Separation of Concerns** — Clear boundaries between layers
+- **Testability** — Each layer can be tested independently
+
+---
+
+## Project Structure
+
+```
+app/
+├── presentation/
+│   ├── screens/
+│   │   ├── home/
+│   │   │   ├── HomeScreen.kt
+│   │   │   ├── HomeViewModel.kt
+│   │   │   ├── HomeUiState.kt
+│   │   │   └── HomeUiAction.kt
+│   │   ├── workout/
+│   │   └── analytics/
+│   └── theme/
+├── domain/
+│   ├── usecases/
+│   ├── models/
+│   └── repositories/
+└── data/
+    ├── local/
+    │   ├── dao/
+    │   └── entities/
+    ├── repositories/
+    └── di/
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Android Studio Hedgehog (2023.1.1) or later
+- Minimum SDK: 24 (Android 7.0)
+- Target SDK: 34 (Android 14)
+- Kotlin 1.9+
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/kin-aliyev/gymify.git
+cd gymify
+```
+
+2. Open in Android Studio
+```bash
+# Open Android Studio and select "Open an existing project"
+# Navigate to the cloned directory
+```
+
+3. Build and run
+```bash
+# Click "Run" or use Shift + F10
+# Select your device or emulator
+```
+
+---
+
+## Development Status
+
+**Current Phase:** Alpha  
+Gymify is functional and actively used for personal training tracking. Features are stable, but UX refinements and additional analytics are planned.
+
+**Note:** This is a personal project without a formal roadmap. Updates are made based on personal needs and learning goals.
+
+---
+
+## Future Considerations
+
+- Cloud backup and sync
+- Exercise video demonstrations
+- Social features (share workouts)
+- Advanced analytics (volume load, progressive overload tracking)
+- Wear OS companion app
+
+---
+
+## Contributing
+
+While this is primarily a personal project, feedback and suggestions are welcome! Feel free to:
+- Open issues for bugs or feature requests
+- Submit pull requests for improvements
+- Share your thoughts on architecture or UX
+
+---
+
+## License
+
+This project is available under the MIT License. See `LICENSE` file for details.
+
+---
+
+## Contact
+
+**Developer:** Ilkin Aliyev  
+**Email:** ilk.aliev04@gmail.com  
+**GitHub:** [@kin-aliyev](https://github.com/kin-aliyev)
+
+---
+
+<p align="center">Made with ❤️ and Kotlin</p>
