@@ -52,3 +52,28 @@
 **Description:** Navigate your main gym routines, create or view workouts, and start sessions with real-time tracking.
 
 ---
+
+### Workout Flow
+| Do Workout Video | Finish Workout |
+|:---------------:|:-------------:|
+| <img src="assets/videos/workout_session_footage.gif" height="400"/> | <img src="assets/screenshots/workout_finish_screen.png" height="400"/> |
+
+**Description:** Track sets, reps, and weights live during workouts and see summary at the end.
+
+---
+
+### Analytics
+| Analytics Dashboard |
+|:-----------------:|
+| <img src="assets/screenshots/analytics_dashboard.png" height="400"/> |
+
+**Description:** Monitor your weekly, monthly, or yearly activity. Visualize BMI and overall progress with charts.
+
+---
+
+### Settings
+| Settings | User Preferences | App Appearance | Language | Support |
+|:--------:|:----------------:|:-------------:|:--------:|:-------:|
+| <img src="assets/screenshots/settings_screen.png" height="400"/> | <img src="assets/screenshots/user_preferences_screen.png" height="400"/> | <img src="assets/screenshots/app_appearance_screen.png" height="400"/> | <img src="assets/screenshots/language_screen.png" height="400"/> | <img src="assets/videos/support_screen_footage.gif" height="400"/> |
+
+**Description:** Update profile, manage preferences, customize theme and language, and access support or author contacts.
